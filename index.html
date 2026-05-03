@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pretty Little Red Flags Book Box</title>
+  <style>
+    :root{
+      --black:#0B0B0D;
+      --blush:#F3CCD7;
+      --rose:#C85A78;
+      --burgundy:#7E1F35;
+      --gold:#C6A15B;
+      --ivory:#F8F0E8;
+      --white:#ffffff;
+      --ink:#141417;
+      --muted:#68616A;
+      --line:rgba(126,31,53,.18);
+      --shadow:0 24px 60px rgba(11,11,13,.16);
+    }
+
+    *{box-sizing:border-box;scroll-behavior:smooth}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--ivory);color:var(--ink)}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+
+    .serif{font-family:Georgia,'Times New Roman',serif}
+    .wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+
+    header{
+      position:sticky;top:0;z-index:20;
+      background:rgba(248,240,232,.92);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.02em}
+    .mark{
+      height:48px;width:48px;border-radius:50%;
+      background:var(--black);color:var(--blush);
+      border:2px solid var(--gold);
+      display:grid;place-items:center;
+      font-weight:1000;font-size:15px;
+      box-shadow:0 10px 28px rgba(11,11,13,.22);
+    }
+    .navlinks{display:flex;gap:24px;font-size:14px;font-weight:900;color:#40383d}
+    .navlinks a:hover{color:var(--burgundy)}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      border:0;border-radius:999px;padding:14px 20px;
+      cursor:pointer;font-weight:1000;font-size:14px;
+      transition:.2s ease;text-align:center;line-height:1.1;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn-dark{background:var(--black);color:var(--ivory);box-shadow:0 14px 30px rgba(11,11,13,.22)}
+    .btn-dark:hover{background:var(--burgundy)}
+    .btn-rose{background:var(--burgundy);color:white;box-shadow:0 14px 30px rgba(126,31,53,.24)}
+    .btn-rose:hover{background:var(--black)}
+    .btn-light{background:rgba(255,255,255,.72);color:var(--black);border:1px solid var(--line)}
+    .btn-gold{background:var(--gold);color:var(--black);box-shadow:0 12px 28px rgba(198,161,91,.26)}
+
+    .hero{
+      position:relative;overflow:hidden;
+      background:
+        radial-gradient(circle at top left, rgba(243,204,215,.9), transparent 34%),
+        radial-gradient(circle at 85% 25%, rgba(198,161,91,.32), transparent 28%),
+        linear-gradient(135deg,var(--ivory) 0%, #f6dbe2 45%, var(--black) 100%);
+    }
+    .hero:before{
+      content:"";
+      position:absolute;inset:0;
+      background-image:
+        linear-gradient(45deg, transparent 49%, rgba(126,31,53,.07) 50%, transparent 51%);
+      background-size:28px 28px;
+      opacity:.45;
+    }
+    .hero-grid{
+      position:relative;z-index:1;
+      display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;
+      padding:86px 0;
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      background:rgba(255,255,255,.7);border:1px solid var(--line);
+      color:var(--burgundy);border-radius:999px;
+      padding:10px 16px;font-size:13px;font-weight:1000;
+      margin-bottom:24px;
+    }
+    h1{
+      font-size:clamp(48px,7vw,86px);
+      line-height:.92;margin:0 0 22px;letter-spacing:-3px;
+      color:var(--black);
+    }
+    h1 .red{display:block;color:var(--burgundy)}
+    .hero-copy{
+      max-width:620px;font-size:19px;line-height:1.7;color:#4a4247;
+      margin:0 0 28px;
+    }
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .scarcity{
+      margin-top:22px;display:flex;gap:10px;align-items:center;
+      color:var(--burgundy);font-weight:900;font-size:14px;
+    }
+    .hero-card{
+      background:rgba(255,255,255,.76);border:1px solid rgba(255,255,255,.8);
+      border-radius:36px;padding:18px;box-shadow:var(--shadow);
+    }
+    .hero-card-inner{
+      border-radius:28px;background:var(--black);color:var(--ivory);
+      padding:28px;position:relative;overflow:hidden;
+    }
+    .hero-card-inner:after{
+      content:"PLRF";position:absolute;right:-8px;bottom:-18px;
+      font-size:92px;font-weight:1000;color:rgba(243,204,215,.08);
+    }
+    .topline{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:24px}
+    .micro{font-size:12px;text-transform:uppercase;letter-spacing:.28em;color:var(--blush);font-weight:1000}
+    .hero-card h2{font-size:34px;margin:8px 0 0;line-height:1}
+    .seal{
+      height:68px;width:68px;border-radius:50%;
+      border:2px solid var(--gold);color:var(--gold);
+      display:grid;place-items:center;text-align:center;font-weight:1000;font-size:11px;line-height:1.05;
+      transform:rotate(-10deg);
+    }
+    .included{display:grid;gap:12px;position:relative;z-index:1}
+    .included div{
+      background:rgba(255,255,255,.09);
+      border:1px solid rgba(255,255,255,.09);
+      padding:14px 16px;border-radius:18px;font-weight:800;
+    }
+    .pretty-note{
+      position:relative;z-index:1;margin-top:18px;border-radius:22px;
+      padding:20px;background:linear-gradient(90deg,var(--burgundy),var(--rose));
+      color:white;
+    }
+    .pretty-note b{display:block;font-size:24px;line-height:1.05;margin-top:4px}
+
+    section{padding:82px 0}
+    .white{background:#fff}
+    .black{background:var(--black);color:var(--ivory)}
+    .center{max-width:820px;text-align:center;margin:0 auto 44px}
+    .label{
+      font-size:13px;text-transform:uppercase;letter-spacing:.32em;
+      color:var(--burgundy);font-weight:1000;margin-bottom:12px;
+    }
+    .black .label{color:var(--blush)}
+    h2{
+      font-size:clamp(34px,5vw,54px);line-height:.98;margin:0 0 16px;
+      letter-spacing:-2px;color:inherit;
+    }
+    .center p,.text p{font-size:18px;line-height:1.7;color:var(--muted);margin:0}
+    .black .center p,.black .text p{color:#d8cdd0}
+
+    .feature-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .mini{
+      background:#fff;border:1px solid var(--line);border-radius:30px;
+      padding:24px;text-align:center;box-shadow:0 14px 34px rgba(11,11,13,.06);
+      font-weight:1000;
+    }
+    .mini span{display:block;font-size:34px;margin-bottom:10px}
+
+    .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .product{
+      background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+      border-radius:34px;padding:30px;box-shadow:0 22px 54px rgba(0,0,0,.22);
+      position:relative;transition:.2s ease;
+    }
+    .product:hover{transform:translateY(-5px)}
+    .product.featured{background:var(--ivory);color:var(--black);border-color:var(--gold)}
+    .tag{
+      display:inline-flex;background:rgba(243,204,215,.12);border:1px solid rgba(243,204,215,.22);
+      color:var(--blush);border-radius:999px;padding:8px 12px;font-size:12px;font-weight:1000;margin-bottom:16px;
+    }
+    .featured .tag{background:rgba(126,31,53,.08);color:var(--burgundy);border-color:rgba(126,31,53,.14)}
+    .ribbon{
+      position:absolute;top:-15px;left:50%;transform:translateX(-50%);
+      background:var(--gold);color:var(--black);font-size:12px;font-weight:1000;
+      padding:9px 14px;border-radius:999px;white-space:nowrap;
+    }
+    .product h3{font-size:26px;margin:0 0 12px}
+    .price{font-size:48px;font-weight:1000;margin:0 0 10px}
+    .price small{font-size:14px;color:#a99fa3}
+    .featured .price small{color:#6c6268}
+    .product p{color:#ddd1d5;line-height:1.65;margin:0 0 22px}
+    .featured p{color:#5e555a}
+    .product ul{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:11px;font-weight:800}
+    .product li:before{content:"✓";color:var(--gold);margin-right:8px;font-weight:1000}
+
+    .split{display:grid;grid-template-columns:.9fr 1.1fr;gap:42px;align-items:start}
+    .notice{
+      margin-top:24px;background:#fff;border:1px solid var(--line);
+      border-radius:28px;padding:24px;box-shadow:0 16px 40px rgba(11,11,13,.06);
+      line-height:1.7;color:#4d4549;
+    }
+    .notice strong{color:var(--burgundy)}
+    .flow-card{
+      background:#fff;border:1px solid var(--line);
+      border-radius:34px;padding:30px;box-shadow:var(--shadow);
+    }
+    .flow-card h3{font-size:26px;margin:0 0 12px}
+    .steps{counter-reset:step;display:grid;gap:14px;margin-top:20px}
+    .step{
+      counter-increment:step;
+      display:flex;gap:14px;align-items:flex-start;
+      padding:16px;border-radius:20px;background:#fff7fb;border:1px solid rgba(126,31,53,.12);
+      font-weight:800;line-height:1.45;
+    }
+    .step:before{
+      content:counter(step);
+      height:32px;width:32px;display:grid;place-items:center;flex:0 0 32px;
+      border-radius:50%;background:var(--black);color:var(--ivory);font-weight:1000;
+    }
+
+    .quiz-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .quiz-card{
+      background:#fff;border:1px solid var(--line);border-radius:28px;padding:24px;
+      box-shadow:0 12px 30px rgba(11,11,13,.05);
+    }
+    .quiz-card h3{margin:0 0 10px;font-size:20px}
+    .quiz-card p{margin:0;color:var(--muted);line-height:1.55}
+
+    form{
+      background:#fff;border:1px solid var(--line);border-radius:34px;
+      padding:30px;box-shadow:var(--shadow);
+    }
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    label{display:grid;gap:7px;font-weight:1000;font-size:14px;color:#3d353a}
+    input,select,textarea{
+      width:100%;border:1px solid rgba(126,31,53,.22);background:#fff7fb;
+      border-radius:18px;padding:14px 15px;font:inherit;font-weight:700;outline:none;
+    }
+    textarea{min-height:110px;resize:vertical}
+    input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(243,204,215,.75)}
+    .full{grid-column:1/-1}
+    .success{
+      display:none;margin-top:18px;border-radius:20px;padding:16px;
+      background:#fff7fb;border:1px solid rgba(126,31,53,.2);
+      color:var(--burgundy);font-weight:900;line-height:1.55;
+    }
+
+    .marketing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .hook{
+      background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+      border-radius:28px;padding:24px;line-height:1.55;font-weight:900;color:#f5e8eb;
+    }
+
+    .faq{display:grid;gap:14px;max-width:860px;margin:0 auto}
+    .faq details{
+      background:#fff;border:1px solid var(--line);border-radius:24px;padding:20px 22px;
+      box-shadow:0 12px 28px rgba(11,11,13,.05);
+    }
+    .faq summary{cursor:pointer;font-weight:1000;font-size:18px}
+    .faq p{color:var(--muted);line-height:1.65;margin:12px 0 0}
+
+    .cta{
+      text-align:center;background:
+      radial-gradient(circle at 25% 0%,rgba(243,204,215,.22),transparent 32%),
+      linear-gradient(135deg,var(--burgundy),var(--black));color:white;
+    }
+    .cta p{max-width:720px;margin:0 auto 26px;color:#f5dbe2;font-size:18px;line-height:1.7}
+
+    footer{background:var(--black);color:var(--ivory);padding:38px 0;text-align:center}
+    footer p{color:#bdb3b7;margin:8px 0 0}
+
+    @media(max-width:920px){
+      .hero-grid,.split{grid-template-columns:1fr}
+      .feature-row,.product-grid,.quiz-grid,.marketing-grid{grid-template-columns:1fr 1fr}
+      .navlinks{display:none}
+    }
+    @media(max-width:560px){
+      .nav{height:auto;padding:12px 0}
+      .brand span:last-child{font-size:14px}
+      .feature-row,.product-grid,.quiz-grid,.marketing-grid,.form-grid{grid-template-columns:1fr}
+      section{padding:60px 0}
+      .hero-grid{padding:60px 0}
+      h1{letter-spacing:-2px}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home">
+      <span class="mark">PLRF</span>
+      <span>Pretty Little Red Flags</span>
+    </a>
+    <nav class="navlinks">
+      <a href="#founder">Founder Drop</a>
+      <a href="#boxes">Boxes</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#setup">Subscribe</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-dark" href="#setup">Join the Drop</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">♥ Books for girls who know better but read worse</div>
+        <h1 class="serif">Pretty outside. <span class="red">Dangerous inside.</span></h1>
+        <p class="hero-copy">
+          A luxury, girly, dark BookTok-inspired book box with tissue-wrapped romance books,
+          blush ribbons, gold details, treats, tabs, candles, quote cards, and questionable taste in fictional men.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-rose" href="#founder">Reserve a Founder Box</a>
+          <a class="btn btn-light" href="#boxes">See the Boxes</a>
+        </div>
+        <div class="scarcity">⚠️ First drop is limited to 10 founder boxes.</div>
+      </div>
+
+      <div class="hero-card">
+        <div class="hero-card-inner">
+          <div class="topline">
+            <div>
+              <div class="micro">Founder Drop Theme</div>
+              <h2 class="serif">Pretty Outside.<br/>Dangerous Inside.</h2>
+            </div>
+            <div class="seal">RED<br/>FLAG<br/>READS</div>
+          </div>
+          <div class="included">
+            <div>✓ One BookTok-friendly romance or dark romance paperback</div>
+            <div>✓ Black or blush tissue wrapping with logo sticker seal</div>
+            <div>✓ Annotation tabs or mini highlighter pack</div>
+            <div>✓ Mini candle, sealed treat, luxury insert card, and quote card</div>
+          </div>
+          <div class="pretty-note">
+            Monthly surprise energy:
+            <b class="serif">A gift from your most unhinged best friend.</b>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap feature-row">
+      <div class="mini"><span>🖤</span>Luxury dark romance vibe</div>
+      <div class="mini"><span>🎀</span>Black tissue + blush ribbon</div>
+      <div class="mini"><span>📖</span>Curated BookTok reads</div>
+      <div class="mini"><span>✨</span>Pretty enough to film</div>
+    </div>
+  </section>
+
+  <section class="white" id="founder">
+    <div class="wrap split">
+      <div class="text">
+        <div class="label">The smart first launch</div>
+        <h2 class="serif">Start with a 10-box Founder Drop.</h2>
+        <p>
+          Instead of opening unlimited subscriptions immediately, launch a limited first 10-box drop.
+          It feels exclusive, lowers risk, creates packing content, and gives you real proof before scaling.
+        </p>
+        <div class="notice">
+          <strong>Founder Drop promise:</strong><br/>
+          One curated romance book, tissue-wrapped like a secret, plus tabs, a candle or treat,
+          an insert card, a quote card, and theme-matched packaging.
+        </div>
+      </div>
+
+      <div class="flow-card">
+        <h3 class="serif">Recommended launch flow</h3>
+        <div class="steps">
+          <div class="step">Customer reserves/pays for the Founder Box.</div>
+          <div class="step">Stripe collects payment, email, and shipping address.</div>
+          <div class="step">After checkout, customer is sent to the Reader Questionnaire.</div>
+          <div class="step">Google Forms saves their answers into your Google Sheet.</div>
+          <div class="step">You match the book, pack the box, ship it, and ask for unboxing videos.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="black" id="boxes">
+    <div class="wrap">
+      <div class="center">
+        <div class="label">Product Suite</div>
+        <h2 class="serif">Pick your fictional mistake.</h2>
+        <p>Start simple, then add premium layers after the first sellout.</p>
+      </div>
+
+      <div class="product-grid">
+        <article class="product">
+          <span class="tag">One-time mystery book</span>
+          <h3>Blind Date With a Red Flag</h3>
+          <div class="price">$24.99</div>
+          <p>Tissue-wrapped mystery romance book with trope label, bookmark, mini quote card, and sticker seal.</p>
+          <ul>
+            <li>1 mystery paperback</li>
+            <li>Trope label</li>
+            <li>Bookmark</li>
+            <li>Mini quote card</li>
+          </ul>
+          <a class="btn btn-light checkout-link" data-link="blind" href="#">Buy Blind Date Box</a>
+        </article>
+
+        <article class="product featured">
+          <div class="ribbon">Best First Offer</div>
+          <span class="tag">Founder Drop / Monthly</span>
+          <h3>Pretty Little Red Flags Box</h3>
+          <div class="price">$49.99 <small>/ box</small></div>
+          <p>Monthly curated box with 1 book, tabs, bookmark, candle or treat, insert card, and themed packaging.</p>
+          <ul>
+            <li>1 curated romance book</li>
+            <li>Tabs + bookmark</li>
+            <li>Candle or treat</li>
+            <li>Luxury insert card</li>
+            <li>Themed packaging</li>
+          </ul>
+          <a class="btn btn-dark checkout-link" data-link="main" href="#">Reserve Founder Box</a>
+        </article>
+
+        <article class="product">
+          <span class="tag">Premium box</span>
+          <h3>Deluxe Drama Box</h3>
+          <div class="price">$64.99+ <small>/ box</small></div>
+          <p>Higher-value box with premium candle, extra goodies, collectible items, and upgraded add-ons.</p>
+          <ul>
+            <li>Premium candle</li>
+            <li>Extra goodies</li>
+            <li>Collectible item</li>
+            <li>Upgraded packaging</li>
+          </ul>
+          <a class="btn btn-light checkout-link" data-link="deluxe" href="#">Subscribe Deluxe</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz">
+    <div class="wrap">
+      <div class="center">
+        <div class="label">Book Curation + Customer Quiz</div>
+        <h2 class="serif">The quiz is what makes it feel personal.</h2>
+        <p>Content notes build trust. The surprise should feel exciting, not scary in the wrong way.</p>
+      </div>
+
+      <div class="quiz-grid">
+        <div class="quiz-card"><h3>Pretty Safe Red Flags</h3><p>Popular romance, open-door spice, low trauma, crowd-friendly picks.</p></div>
+        <div class="quiz-card"><h3>Dark & Dramatic</h3><p>Morally gray men, obsession, mafia, secret society, and higher tension.</p></div>
+        <div class="quiz-card"><h3>Spicy but Soft</h3><p>Hot romance with emotional connection, praise, caretaking, and HEA energy.</p></div>
+        <div class="quiz-card"><h3>Unhinged BookTok</h3><p>Viral, intense, polarizing books for readers who ask for chaos.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="white" id="setup">
+    <div class="wrap split">
+      <div class="text">
+        <div class="label">Subscribe + Questionnaire</div>
+        <h2 class="serif">Pay first. Quiz second.</h2>
+        <p>
+          The cleanest setup is: customer checks out through Stripe, then gets redirected to the Reader Questionnaire.
+          Their quiz answers go into a Google Sheet so you can curate, pack, and ship.
+        </p>
+        <div class="notice">
+          <strong>Important:</strong> All three Stripe checkout buttons and the Reader Questionnaire button are connected now.
+        </div>
+      </div>
+
+      <form id="interestForm">
+        <div class="form-grid">
+          <label>Name<input required name="name" placeholder="Your name"></label>
+          <label>Email<input required type="email" name="email" placeholder="you@email.com"></label>
+          <label>Box interest
+            <select name="box">
+              <option>Founder Drop - $49.99</option>
+              <option>Blind Date With a Red Flag - $24.99</option>
+              <option>Deluxe Drama Box - $64.99+</option>
+              <option>Monthly subscription waitlist</option>
+            </select>
+          </label>
+          <label>Book bucket
+            <select name="bucket">
+              <option>Pretty Safe Red Flags</option>
+              <option>Dark & Dramatic</option>
+              <option>Spicy but Soft</option>
+              <option>Unhinged BookTok</option>
+            </select>
+          </label>
+          <label class="full">Hard no topics / allergies / notes
+            <textarea name="notes" placeholder="Tell us anything we should avoid or know before curating your box."></textarea>
+          </label>
+        </div>
+        <button class="btn btn-rose" style="width:100%;margin-top:18px" type="submit">Join the Founder Drop List</button>
+        <a class="btn btn-dark google-form-link" style="width:100%;margin-top:12px" href="#" target="_blank" rel="noopener">Open Full Reader Questionnaire</a>
+        <div class="success" id="successBox">
+          Mockup saved on this page only. For real collection, replace this form with your Google Form link or embed code.
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="black">
+    <div class="wrap">
+      <div class="center">
+        <div class="label">Launch-week hooks</div>
+        <h2 class="serif">Sell the feeling, not just the book.</h2>
+      </div>
+      <div class="marketing-grid">
+        <div class="hook">Packing founder boxes for girls who know better but read worse.</div>
+        <div class="hook">A book box for women who say “red flag” and then add to cart.</div>
+        <div class="hook">Only 10 founder boxes. Once they are gone, they are gone.</div>
+        <div class="hook">Choose your fictional problem: mafia, billionaire, cowboy, or villain.</div>
+        <div class="hook">Pretty outside. Dangerous inside. That is the whole brand.</div>
+        <div class="hook">Books, tabs, candles, treats, and questionable taste in men.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="white" id="faq">
+    <div class="wrap">
+      <div class="center">
+        <div class="label">FAQ</div>
+        <h2 class="serif">Tiny details. Big red flag energy.</h2>
+      </div>
+
+      <div class="faq">
+        <details open>
+          <summary>Where does customer information go?</summary>
+          <p>Payment, email, and shipping info should be collected in Stripe. Reader preferences should be collected in Google Forms and saved into Google Sheets.</p>
+        </details>
+        <details>
+          <summary>Should I launch subscriptions immediately?</summary>
+          <p>The recommended first move is a limited 10-box Founder Drop. After that sells out, use the demand and testimonials to open recurring monthly subscriptions.</p>
+        </details>
+        <details>
+          <summary>Can customers choose their spice level?</summary>
+          <p>Yes. The questionnaire should ask for spice level, hard no topics, content notes, favorite tropes, books already owned, and favorite book boyfriend type.</p>
+        </details>
+        <details>
+          <summary>What about snacks or treats?</summary>
+          <p>Use sealed shelf-stable treats or individually wrapped bakery-style items, and clearly collect/label allergies.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2 class="serif">Your next fictional mistake ships monthly.</h2>
+      <p>Launch small, make it gorgeous, film the packing, sell out the 10, then turn it into the subscription everybody wishes they joined first.</p>
+      <a class="btn btn-gold" href="#boxes">Choose a Box</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong>PLRF · Pretty Little Red Flags</strong>
+    <p>Pretty outside. Dangerous inside.</p>
+  </div>
+</footer>
+
+<script>
+  // Replace these placeholder links with your real Stripe Payment Links and Google Form URL.
+  const PLRF_LINKS = {
+    blind: "https://buy.stripe.com/9B6dRa2kh3Jy5xFacY0gw01",
+    main: "https://buy.stripe.com/7sYaEY0c94NC3pxete0gw00",
+    deluxe: "https://buy.stripe.com/6oU5kE6Axbc01hp1Gs0gw02",
+    questionnaire: "https://docs.google.com/forms/d/e/1FAIpQLScLwkp5CEnkWy2M5h3ANWMDHqJUSgfdDurWJd3l76dX6Gk52w/viewform"
+  };
+
+  document.querySelectorAll(".checkout-link").forEach(button => {
+    button.addEventListener("click", function(event) {
+      const key = this.dataset.link;
+      const url = PLRF_LINKS[key];
+      if (!url || url.includes("PASTE_")) {
+        event.preventDefault();
+        alert("This button is ready, but it needs your real Stripe checkout link added first.");
+      } else {
+        this.href = url;
+      }
+    });
+  });
+
+  const googleFormButton = document.querySelector(".google-form-link");
+  googleFormButton.addEventListener("click", function(event) {
+    if (!PLRF_LINKS.questionnaire || PLRF_LINKS.questionnaire.includes("PASTE_")) {
+      event.preventDefault();
+      alert("Add your real Google Form reader questionnaire link first.");
+    } else {
+      this.href = PLRF_LINKS.questionnaire;
+    }
+  });
+
+  document.getElementById("interestForm").addEventListener("submit", function(event){
+    event.preventDefault();
+    document.getElementById("successBox").style.display = "block";
+  });
+</script>
+</body>
+</html>
