@@ -23,7 +23,6 @@
     body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--ivory);color:var(--ink)}
     a{text-decoration:none;color:inherit}
     img{max-width:100%;display:block}
-
     .serif{font-family:Georgia,'Times New Roman',serif}
     .wrap{max-width:1160px;margin:0 auto;padding:0 20px}
 
@@ -33,6 +32,7 @@
       backdrop-filter:blur(14px);
       border-bottom:1px solid var(--line);
     }
+
     .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
     .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.02em}
     .mark{
@@ -43,8 +43,10 @@
       font-weight:1000;font-size:15px;
       box-shadow:0 10px 28px rgba(11,11,13,.22);
     }
+
     .navlinks{display:flex;gap:24px;font-size:14px;font-weight:900;color:#40383d}
     .navlinks a:hover{color:var(--burgundy)}
+
     .btn{
       display:inline-flex;align-items:center;justify-content:center;gap:8px;
       border:0;border-radius:999px;padding:14px 20px;
@@ -196,14 +198,16 @@
     .flow-card{
       background:#fff;border:1px solid var(--line);
       border-radius:34px;padding:30px;box-shadow:var(--shadow);
+      color:var(--ink);
     }
     .flow-card h3{font-size:26px;margin:0 0 12px}
+    .flow-card p{font-size:17px;line-height:1.65;color:var(--muted);margin:0}
     .steps{counter-reset:step;display:grid;gap:14px;margin-top:20px}
     .step{
       counter-increment:step;
       display:flex;gap:14px;align-items:flex-start;
       padding:16px;border-radius:20px;background:#fff7fb;border:1px solid rgba(126,31,53,.12);
-      font-weight:800;line-height:1.45;
+      font-weight:800;line-height:1.45;color:var(--ink);
     }
     .step:before{
       content:counter(step);
@@ -218,25 +222,6 @@
     }
     .quiz-card h3{margin:0 0 10px;font-size:20px}
     .quiz-card p{margin:0;color:var(--muted);line-height:1.55}
-
-    form{
-      background:#fff;border:1px solid var(--line);border-radius:34px;
-      padding:30px;box-shadow:var(--shadow);
-    }
-    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    label{display:grid;gap:7px;font-weight:1000;font-size:14px;color:#3d353a}
-    input,select,textarea{
-      width:100%;border:1px solid rgba(126,31,53,.22);background:#fff7fb;
-      border-radius:18px;padding:14px 15px;font:inherit;font-weight:700;outline:none;
-    }
-    textarea{min-height:110px;resize:vertical}
-    input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(243,204,215,.75)}
-    .full{grid-column:1/-1}
-    .success{
-      display:none;margin-top:18px;border-radius:20px;padding:16px;
-      background:#fff7fb;border:1px solid rgba(126,31,53,.2);
-      color:var(--burgundy);font-weight:900;line-height:1.55;
-    }
 
     .marketing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
     .hook{
@@ -270,7 +255,7 @@
     @media(max-width:560px){
       .nav{height:auto;padding:12px 0}
       .brand span:last-child{font-size:14px}
-      .feature-row,.product-grid,.quiz-grid,.marketing-grid,.form-grid{grid-template-columns:1fr}
+      .feature-row,.product-grid,.quiz-grid,.marketing-grid{grid-template-columns:1fr}
       section{padding:60px 0}
       .hero-grid{padding:60px 0}
       h1{letter-spacing:-2px}
@@ -288,7 +273,7 @@
       <a href="#founder">Founder Drop</a>
       <a href="#boxes">Boxes</a>
       <a href="#quiz">Quiz</a>
-      <a href="#setup">Subscribe</a>
+      <a href="#setup">Order</a>
       <a href="#faq">FAQ</a>
     </nav>
     <a class="btn btn-dark" href="#setup">Join the Drop</a>
@@ -348,11 +333,11 @@
   <section class="white" id="founder">
     <div class="wrap split">
       <div class="text">
-        <div class="label">The smart first launch</div>
-        <h2 class="serif">Start with a 10-box Founder Drop.</h2>
+        <div class="label">Limited first drop</div>
+        <h2 class="serif">Our first Founder Drop includes only 10 boxes.</h2>
         <p>
-          Instead of opening unlimited subscriptions immediately, launch a limited first 10-box drop.
-          It feels exclusive, lowers risk, creates packing content, and gives you real proof before scaling.
+          We’re opening Pretty Little Red Flags with a limited founder drop of just 10 curated boxes.
+          Once they’re gone, they’re gone — and every box is packed with luxe details, reader-matched picks, and dark-romance energy.
         </p>
         <div class="notice">
           <strong>Founder Drop promise:</strong><br/>
@@ -362,13 +347,12 @@
       </div>
 
       <div class="flow-card">
-        <h3 class="serif">Recommended launch flow</h3>
+        <h3 class="serif">How it works</h3>
         <div class="steps">
-          <div class="step">Customer reserves/pays for the Founder Box.</div>
-          <div class="step">Stripe collects payment, email, and shipping address.</div>
-          <div class="step">After checkout, customer is sent to the Reader Questionnaire.</div>
-          <div class="step">Google Forms saves their answers into your Google Sheet.</div>
-          <div class="step">You match the book, pack the box, ship it, and ask for unboxing videos.</div>
+          <div class="step">Choose your box and check out securely through Stripe.</div>
+          <div class="step">Complete the Reader Questionnaire so we can learn your tastes, tropes, and hard no’s.</div>
+          <div class="step">We curate your box with a book and goodies that match your reading style.</div>
+          <div class="step">Your Pretty Little Red Flags box is packed, wrapped, and shipped with care.</div>
         </div>
       </div>
     </div>
@@ -379,7 +363,7 @@
       <div class="center">
         <div class="label">Product Suite</div>
         <h2 class="serif">Pick your fictional mistake.</h2>
-        <p>Start simple, then add premium layers after the first sellout.</p>
+        <p>Start with a mystery book, reserve a founder box, or go full deluxe drama.</p>
       </div>
 
       <div class="product-grid">
@@ -398,11 +382,11 @@
         </article>
 
         <article class="product featured">
-          <div class="ribbon">Best First Offer</div>
-          <span class="tag">Founder Drop / Monthly</span>
+          <div class="ribbon">Limited to 10 Boxes</div>
+          <span class="tag">Founder Drop</span>
           <h3>Pretty Little Red Flags Box</h3>
           <div class="price">$49.99 <small>/ box</small></div>
-          <p>Monthly curated box with 1 book, tabs, bookmark, candle or treat, insert card, and themed packaging.</p>
+          <p>Curated dark romance box with 1 book, tabs, bookmark, candle or treat, insert card, and themed packaging.</p>
           <ul>
             <li>1 curated romance book</li>
             <li>Tabs + bookmark</li>
@@ -424,7 +408,7 @@
             <li>Collectible item</li>
             <li>Upgraded packaging</li>
           </ul>
-          <a class="btn btn-light checkout-link" data-link="deluxe" href="#">Subscribe Deluxe</a>
+          <a class="btn btn-light checkout-link" data-link="deluxe" href="#">Buy Deluxe Drama Box</a>
         </article>
       </div>
     </div>
@@ -434,7 +418,7 @@
     <div class="wrap">
       <div class="center">
         <div class="label">Book Curation + Customer Quiz</div>
-        <h2 class="serif">The quiz is what makes it feel personal.</h2>
+        <h2 class="serif">The quiz is what makes it personal.</h2>
         <p>Content notes build trust. The surprise should feel exciting, not scary in the wrong way.</p>
       </div>
 
@@ -450,47 +434,30 @@
   <section class="white" id="setup">
     <div class="wrap split">
       <div class="text">
-        <div class="label">Subscribe + Questionnaire</div>
-        <h2 class="serif">Pay first. Quiz second.</h2>
+        <div class="label">Order + Questionnaire</div>
+        <h2 class="serif">Reserve your box.</h2>
         <p>
-          The cleanest setup is: customer checks out through Stripe, then gets redirected to the Reader Questionnaire.
-          Their quiz answers go into a Google Sheet so you can curate, pack, and ship.
+          Secure your box, then tell us about your reading taste in the Reader Questionnaire.
+          Your answers help us match your tropes, spice level, aesthetics, and hard no’s so your box feels personal.
         </p>
         <div class="notice">
-          <strong>Important:</strong> All three Stripe checkout buttons and the Reader Questionnaire button are connected now.
+          <strong>Founder Drop notice:</strong> Only 10 Founder Boxes are available in this first drop.
         </div>
       </div>
 
-      <form id="interestForm">
-        <div class="form-grid">
-          <label>Name<input required name="name" placeholder="Your name"></label>
-          <label>Email<input required type="email" name="email" placeholder="you@email.com"></label>
-          <label>Box interest
-            <select name="box">
-              <option>Founder Drop - $49.99</option>
-              <option>Blind Date With a Red Flag - $24.99</option>
-              <option>Deluxe Drama Box - $64.99+</option>
-              <option>Monthly subscription waitlist</option>
-            </select>
-          </label>
-          <label>Book bucket
-            <select name="bucket">
-              <option>Pretty Safe Red Flags</option>
-              <option>Dark & Dramatic</option>
-              <option>Spicy but Soft</option>
-              <option>Unhinged BookTok</option>
-            </select>
-          </label>
-          <label class="full">Hard no topics / allergies / notes
-            <textarea name="notes" placeholder="Tell us anything we should avoid or know before curating your box."></textarea>
-          </label>
+      <div class="flow-card">
+        <h3 class="serif">Ready to order?</h3>
+        <p>Choose the box that fits your mood, then complete the Reader Questionnaire so we can curate your order.</p>
+        <div class="steps">
+          <div class="step">Blind Date With a Red Flag — a tissue-wrapped mystery romance surprise.</div>
+          <div class="step">Pretty Little Red Flags Founder Box — our signature limited founder drop.</div>
+          <div class="step">Deluxe Drama Box — premium extras, upgraded packaging, and more drama.</div>
         </div>
-        <button class="btn btn-rose" style="width:100%;margin-top:18px" type="submit">Join the Founder Drop List</button>
-        <a class="btn btn-dark google-form-link" style="width:100%;margin-top:12px" href="#" target="_blank" rel="noopener">Open Full Reader Questionnaire</a>
-        <div class="success" id="successBox">
-          Mockup saved on this page only. For real collection, replace this form with your Google Form link or embed code.
-        </div>
-      </form>
+        <a class="btn btn-rose checkout-link" data-link="main" style="width:100%;margin-top:18px" href="#">Reserve Founder Box</a>
+        <a class="btn btn-light checkout-link" data-link="blind" style="width:100%;margin-top:12px" href="#">Buy Blind Date Box</a>
+        <a class="btn btn-light checkout-link" data-link="deluxe" style="width:100%;margin-top:12px" href="#">Buy Deluxe Drama Box</a>
+        <a class="btn btn-dark google-form-link" style="width:100%;margin-top:12px" href="#" target="_blank" rel="noopener">Take the Reader Questionnaire</a>
+      </div>
     </div>
   </section>
 
@@ -520,20 +487,20 @@
 
       <div class="faq">
         <details open>
-          <summary>Where does customer information go?</summary>
-          <p>Payment, email, and shipping info should be collected in Stripe. Reader preferences should be collected in Google Forms and saved into Google Sheets.</p>
+          <summary>How does ordering work?</summary>
+          <p>After checkout, you’ll be directed to our Reader Questionnaire so we can learn your preferences and curate your box with care.</p>
         </details>
         <details>
-          <summary>Should I launch subscriptions immediately?</summary>
-          <p>The recommended first move is a limited 10-box Founder Drop. After that sells out, use the demand and testimonials to open recurring monthly subscriptions.</p>
+          <summary>Is this a subscription?</summary>
+          <p>We’re starting with a limited 10-box Founder Drop. Monthly subscriptions may open after the first drop sells out.</p>
         </details>
         <details>
           <summary>Can customers choose their spice level?</summary>
-          <p>Yes. The questionnaire should ask for spice level, hard no topics, content notes, favorite tropes, books already owned, and favorite book boyfriend type.</p>
+          <p>Yes. The Reader Questionnaire lets you share your spice level, hard no topics, favorite tropes, reading style, and aesthetic preferences.</p>
         </details>
         <details>
           <summary>What about snacks or treats?</summary>
-          <p>Use sealed shelf-stable treats or individually wrapped bakery-style items, and clearly collect/label allergies.</p>
+          <p>We collect allergy and sensitivity notes in the Reader Questionnaire. Sealed treats are used whenever possible.</p>
         </details>
       </div>
     </div>
@@ -556,7 +523,6 @@
 </footer>
 
 <script>
-  // Replace these placeholder links with your real Stripe Payment Links and Google Form URL.
   const PLRF_LINKS = {
     blind: "https://buy.stripe.com/9B6dRa2kh3Jy5xFacY0gw01",
     main: "https://buy.stripe.com/7sYaEY0c94NC3pxete0gw00",
@@ -570,7 +536,7 @@
       const url = PLRF_LINKS[key];
       if (!url || url.includes("PASTE_")) {
         event.preventDefault();
-        alert("This button is ready, but it needs your real Stripe checkout link added first.");
+        alert("This button is ready, but it needs the checkout link added first.");
       } else {
         this.href = url;
       }
@@ -578,19 +544,16 @@
   });
 
   const googleFormButton = document.querySelector(".google-form-link");
-  googleFormButton.addEventListener("click", function(event) {
-    if (!PLRF_LINKS.questionnaire || PLRF_LINKS.questionnaire.includes("PASTE_")) {
-      event.preventDefault();
-      alert("Add your real Google Form reader questionnaire link first.");
-    } else {
-      this.href = PLRF_LINKS.questionnaire;
-    }
-  });
-
-  document.getElementById("interestForm").addEventListener("submit", function(event){
-    event.preventDefault();
-    document.getElementById("successBox").style.display = "block";
-  });
+  if (googleFormButton) {
+    googleFormButton.addEventListener("click", function(event) {
+      if (!PLRF_LINKS.questionnaire || PLRF_LINKS.questionnaire.includes("PASTE_")) {
+        event.preventDefault();
+        alert("The Reader Questionnaire link still needs to be added.");
+      } else {
+        this.href = PLRF_LINKS.questionnaire;
+      }
+    });
+  }
 </script>
 </body>
 </html>
