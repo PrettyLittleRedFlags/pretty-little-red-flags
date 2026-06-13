@@ -1,313 +1,313 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shop the Boxes — Pretty Little Red Flags</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<style>
-.page-head{
-  padding:80px 48px 48px;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-}
-.page-head::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:radial-gradient(ellipse at 50% 100%,rgba(212,82,122,0.08) 0%,transparent 60%);
-  pointer-events:none;
-}
-.page-head h1{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(60px,9vw,140px);
-  line-height:0.9;
-  margin-bottom:18px;
-}
-.page-head h1 em{
-  font-family:'DM Serif Display',serif;
-  font-style:italic;
-  color:var(--rose);
-}
-.page-head .lead{margin:0 auto;text-align:center;}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop | Pretty Little Red Flags Book Box</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .shop-hero {
+      padding: 5rem 2rem 3rem;
+      text-align: center;
+      background: linear-gradient(180deg, #1a0508 0%, var(--noir) 100%);
+      position: relative;
+    }
+    .shop-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(187,14,30,0.15) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .shop-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 9vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.8rem;
+    }
+    .shop-hero h1 span { color: var(--crimson); }
+    .shop-hero p {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      color: var(--blush);
+      font-size: 1.1rem;
+      opacity: 0.85;
+    }
 
-.boxes-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:1px;
-  background:var(--border);
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-}
-.box-card{
-  background:var(--card);
-  padding:48px 36px;
-  display:flex;
-  flex-direction:column;
-  transition:background 0.4s;
-  position:relative;
-}
-.box-card:hover{background:#180e1a;}
-.box-card.featured{background:linear-gradient(180deg,#1a0e16 0%,#120a12 100%);}
-.box-badge{
-  position:absolute;
-  top:0;
-  left:50%;
-  transform:translateX(-50%);
-  background:var(--rose);
-  color:var(--black);
-  font-size:9px;
-  font-weight:600;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  padding:6px 22px;
-}
-.box-num{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:80px;
-  color:rgba(212,82,122,0.15);
-  line-height:1;
-  margin-bottom:8px;
-}
-.box-tag{
-  font-size:10px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  color:var(--gold);
-  margin-bottom:12px;
-}
-.box-name{
-  font-family:'DM Serif Display',serif;
-  font-style:italic;
-  font-size:30px;
-  line-height:1.1;
-  color:var(--cream);
-  margin-bottom:14px;
-}
-.box-blurb{
-  font-size:13px;
-  color:var(--muted);
-  line-height:1.7;
-  margin-bottom:24px;
-  flex:1;
-}
-.box-price{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:56px;
-  color:var(--rose);
-  letter-spacing:1px;
-  line-height:1;
-  margin-bottom:8px;
-}
-.box-price-unit{
-  font-size:12px;
-  color:var(--muted);
-  letter-spacing:1px;
-  margin-bottom:24px;
-}
-.box-features{
-  list-style:none;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  margin-bottom:32px;
-  padding-top:24px;
-  border-top:1px solid var(--border);
-}
-.box-features li{
-  font-size:13px;
-  color:var(--muted);
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-.box-features li::before{
-  content:'♥';
-  color:var(--rose);
-  font-size:10px;
-}
+    /* BOXES */
+    .shop-section {
+      padding: 4rem 2rem 6rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .product-card {
+      border: 1px solid var(--border);
+      margin-bottom: 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      min-height: 340px;
+      transition: border-color 0.25s;
+      position: relative;
+    }
+    .product-card:hover { border-color: rgba(187,14,30,0.6); }
+    .product-card .badge {
+      position: absolute;
+      top: 0; left: 0;
+      background: var(--crimson);
+      color: var(--white);
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+    }
+    .card-visual {
+      background: linear-gradient(135deg, #1a0508, #0f0f0f);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2rem;
+      border-right: 1px solid var(--border);
+    }
+    .card-visual .box-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      color: rgba(187,14,30,0.15);
+      line-height: 1;
+    }
+    .card-visual .box-icon {
+      font-size: 3rem;
+      text-align: center;
+    }
+    .card-body {
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card-body h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+    .card-body .price {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+    .card-body p {
+      font-size: 0.85rem;
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .card-includes {
+      list-style: none;
+      margin-bottom: 1.8rem;
+    }
+    .card-includes li {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      padding: 0.3rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      letter-spacing: 0.04em;
+    }
+    .card-includes li::before {
+      content: '♥  ';
+      color: var(--crimson);
+      font-size: 0.6rem;
+    }
 
-/* How it works strip */
-.how-strip{
-  padding:80px 48px;
-}
-.how-strip-head{
-  text-align:center;
-  margin-bottom:48px;
-}
-.how-strip-head .eyebrow{justify-content:center;}
-.how-strip-head .eyebrow::before{display:none;}
-.steps{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:1px;
-  background:var(--border);
-  border:1px solid var(--border);
-}
-.step{
-  background:var(--black);
-  padding:32px 28px;
-  transition:background 0.3s;
-}
-.step:hover{background:var(--deep);}
-.step-n{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:36px;
-  color:var(--rose);
-  line-height:1;
-  margin-bottom:14px;
-}
-.step h4{
-  font-family:'DM Serif Display',serif;
-  font-style:italic;
-  font-size:20px;
-  color:var(--cream);
-  margin-bottom:10px;
-}
-.step p{font-size:13px;color:var(--muted);line-height:1.7;}
+    /* HOW IT WORKS */
+    .how-section {
+      padding: 4rem 2rem 5rem;
+      background: #0a0a0a;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .how-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      letter-spacing: 0.05em;
+      margin-bottom: 3rem;
+    }
+    .how-section h2 span { color: var(--crimson); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+    }
+    .step {
+      text-align: center;
+      padding: 0 1rem;
+    }
+    .step-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--crimson);
+      opacity: 0.4;
+      line-height: 1;
+      margin-bottom: 0.8rem;
+    }
+    .step h3 {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      margin-bottom: 0.6rem;
+    }
+    .step p {
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.7;
+    }
 
-@media(max-width:900px){
-  .page-head{padding:60px 24px 36px;}
-  .boxes-grid{grid-template-columns:1fr;}
-  .box-card{padding:36px 28px;}
-  .how-strip{padding:60px 24px;}
-  .steps{grid-template-columns:1fr 1fr;}
-}
-@media(max-width:540px){
-  .steps{grid-template-columns:1fr;}
-}
-</style>
+    /* QUIZ CTA */
+    .quiz-nudge {
+      padding: 3.5rem 2rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .quiz-nudge p {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      color: var(--blush);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.8;
+    }
+
+    @media (max-width: 640px) {
+      .product-card { grid-template-columns: 1fr; }
+      .card-visual { display: none; }
+      .card-body { padding: 2rem 1.5rem; }
+      .shop-hero { padding: 3rem 1.25rem 2rem; }
+      .shop-section { padding: 2.5rem 1.25rem 4rem; }
+      .how-section { padding: 3rem 1.25rem 4rem; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="index.html" class="logo">P L R F <span>♥</span></a>
+  <a href="index.html" class="nav-logo">Pretty Little <span>Red Flags</span></a>
+  <button class="burger" id="navBurger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Home</a></li>
     <li><a href="shop.html" class="active">Shop</a></li>
+    <li><a href="quiz.html">Quiz</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="faq.html">FAQ</a></li>
-    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScLwkp5CEnkWy2M5h3ANWMDHqJUSgfdDurWJd3l76dX6Gk52w/viewform" target="_blank" class="nav-cta">Reader Quiz</a></li>
   </ul>
-  <div class="nav-burger" id="navBurger"><span></span><span></span><span></span></div>
 </nav>
 
-<main>
-
-<!-- PAGE HEAD -->
-<section class="page-head">
-  <div class="eyebrow" style="justify-content:center;">♥ Shop the Boxes</div>
-  <h1>Pick your<br><em>fictional mistake.</em></h1>
-  <p class="lead">Start with a mystery, reserve a founder box, or go full deluxe drama. Every box is curated to your reading taste.</p>
+<section class="shop-hero">
+  <p class="section-eyebrow">Choose Your Chaos</p>
+  <h1>The <span>Boxes</span></h1>
+  <p>Tissue-wrapped. Wax-sealed. Delivered with a kiss.</p>
 </section>
 
-<!-- BOXES -->
-<section class="boxes-grid">
+<div class="divider"><div class="divider-line"></div><span class="divider-icon">♥</span><div class="divider-line right"></div></div>
 
-  <!-- Founder Box -->
-  <div class="box-card featured">
-    <div class="box-badge">Limited — 10 Only</div>
-    <div class="box-num">01</div>
-    <p class="box-tag">Founder drop</p>
-    <h2 class="box-name">Pretty Little Red Flags Box</h2>
-    <p class="box-blurb">Our signature founder box — one curated romance book, tabs, a candle or treat, an insert card, and theme-matched packaging.</p>
-    <div class="box-price">$49<span style="font-size:30px;">.99</span></div>
-    <p class="box-price-unit">Per box · Limited release</p>
-    <ul class="box-features">
-      <li>1 curated romance book</li>
-      <li>Annotation tabs + bookmark</li>
-      <li>Candle or treat</li>
-      <li>Luxury insert card</li>
-      <li>Themed packaging</li>
-    </ul>
-    <a href="https://buy.stripe.com/4gM8wQe2Zeoc4tBgBm0gw03" target="_blank" class="btn btn-rose">Reserve Founder Box</a>
+<section class="shop-section">
+
+  <!-- FOUNDER BOX -->
+  <div class="product-card">
+    <div class="badge">Limited · 10 Boxes Only</div>
+    <div class="card-visual">
+      <div class="box-icon">🖤</div>
+    </div>
+    <div class="card-body">
+      <div>
+        <h2>Founder Box</h2>
+        <div class="price">$49.99</div>
+        <p>The original. One curated dark romance read, hand-selected and wrapped like a secret. Every detail considered — from the tissue paper to the wax seal to the mystery theme reveal card inside.</p>
+        <ul class="card-includes">
+          <li>One curated dark romance novel</li>
+          <li>Mystery theme reveal card</li>
+          <li>Welcome letter insert</li>
+          <li>Black crinkle shred & blush tissue</li>
+          <li>Gold wax seal</li>
+          <li>Hand-tied ribbon</li>
+        </ul>
+      </div>
+      <a href="https://buy.stripe.com/4gM8wQe2Zeoc4tBgBm0gw03" class="btn-primary" target="_blank">Get Your Founder Box — $49.99</a>
+    </div>
   </div>
 
-  <!-- Deluxe -->
-  <div class="box-card">
-    <div class="box-num">02</div>
-    <p class="box-tag">Premium box</p>
-    <h2 class="box-name">Deluxe Drama Box</h2>
-    <p class="box-blurb">The premium tier — upgraded packaging, a premium candle, a collectible item, and extra goodies. Maximum drama.</p>
-    <div class="box-price">$64<span style="font-size:30px;">.99+</span></div>
-    <p class="box-price-unit">Starting price</p>
-    <ul class="box-features">
-      <li>1 curated romance book</li>
-      <li>Premium candle</li>
-      <li>Collectible item</li>
-      <li>Extra goodies</li>
-      <li>Upgraded packaging</li>
-    </ul>
-    <a href="https://buy.stripe.com/6oU5kE6Axbc01hp1Gs0gw02" target="_blank" class="btn btn-gold">Buy Deluxe Drama</a>
+  <!-- DELUXE DRAMA -->
+  <div class="product-card">
+    <div class="card-visual">
+      <div class="box-icon">🔥</div>
+    </div>
+    <div class="card-body">
+      <div>
+        <h2>Deluxe Drama</h2>
+        <div class="price">$64.99+</div>
+        <p>Everything in the Founder Box, elevated. More extras. More drama. More of everything that makes opening the box feel like the first chapter of something you can't put down.</p>
+        <ul class="card-includes">
+          <li>One curated dark romance novel</li>
+          <li>Mystery theme reveal card</li>
+          <li>Welcome letter insert</li>
+          <li>Premium packaging & extras</li>
+          <li>Additional curated goodies</li>
+          <li>Gold wax seal & ribbon</li>
+        </ul>
+      </div>
+      <a href="https://buy.stripe.com/6oU5kE6Axbc01hp1Gs0gw02" class="btn-primary" target="_blank">Get Your Deluxe Box — $64.99+</a>
+    </div>
   </div>
 
 </section>
 
 <!-- HOW IT WORKS -->
-<section class="how-strip">
-  <div class="how-strip-head">
-    <div class="eyebrow">♥ How It Works</div>
-    <h2 class="title">Simple as a <em>situationship.</em></h2>
-  </div>
+<section class="how-section">
+  <p class="section-eyebrow">The Experience</p>
+  <h2>How It <span>Works</span></h2>
   <div class="steps">
     <div class="step">
-      <div class="step-n">01</div>
-      <h4>Choose your box</h4>
-      <p>Pick your box and check out securely through Stripe.</p>
+      <div class="step-num">01</div>
+      <h3>Choose Your Box</h3>
+      <p>Pick the experience that matches your chaos level. Not sure? Take the quiz first.</p>
     </div>
     <div class="step">
-      <div class="step-n">02</div>
-      <h4>Take the quiz</h4>
-      <p>Share your spice level, tropes, and hard no's in the Reader Questionnaire.</p>
+      <div class="step-num">02</div>
+      <h3>We Curate</h3>
+      <p>Your box is hand-selected, wrapped in tissue paper, and sealed with care. No two boxes are the same.</p>
     </div>
     <div class="step">
-      <div class="step-n">03</div>
-      <h4>We curate</h4>
-      <p>We handpick your book and goodies to match your reading style.</p>
-    </div>
-    <div class="step">
-      <div class="step-n">04</div>
-      <h4>Ships to you</h4>
-      <p>Tissue-wrapped, ribbon-tied, and shipped with questionable taste.</p>
+      <div class="step-num">03</div>
+      <h3>You Unbox</h3>
+      <p>It arrives tissue-wrapped and wax-sealed. The unboxing is part of the experience. We meant it that way.</p>
     </div>
   </div>
+  <a href="quiz.html" class="btn-line">Take the Reader Quiz First</a>
 </section>
 
-</main>
+<!-- QUIZ NUDGE -->
+<div class="quiz-nudge">
+  <p>Not sure which box is right for you?</p>
+  <a href="quiz.html" class="btn-line">Find Your Reader Type →</a>
+</div>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-top">
-    <div>
-      <div class="footer-logo">P L R F <span>♥</span></div>
-      <p class="footer-tag">"Pretty outside. Dangerous inside."</p>
-    </div>
-    <div class="footer-col">
-      <h4>Browse</h4>
-      <ul>
-        <li><a href="shop.html">Shop the Boxes</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScLwkp5CEnkWy2M5h3ANWMDHqJUSgfdDurWJd3l76dX6Gk52w/viewform" target="_blank">Reader Quiz</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Follow</h4>
-      <ul>
-        <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
-        <li><a href="https://tiktok.com" target="_blank">TikTok</a></li>
-        <li><a href="https://pinterest.com" target="_blank">Pinterest</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2026 Pretty Little Red Flags. All rights reserved.</p>
-    <p>Made with <span class="rose">♥</span> and questionable taste in men.</p>
-  </div>
+  <div class="footer-logo">Pretty Little <span>Red Flags</span></div>
+  <p class="footer-tagline">Pretty outside. Dangerous inside.</p>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="quiz.html">Quiz</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 Pretty Little Red Flags Book Box · prettylittlerf.com<br/>Made with <span class="rose">♥</span> and questionable taste in men.</p>
 </footer>
 
 <script>

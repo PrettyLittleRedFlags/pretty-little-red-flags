@@ -1,239 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pretty Little Red Flags — Book Box</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<style>
-/* ── HOME-SPECIFIC ── */
-.hero{
-  min-height:calc(100vh - 65px);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:80px 48px 60px;
-  position:relative;
-  overflow:hidden;
-}
-.hero::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:radial-gradient(ellipse at 70% 50%,rgba(212,82,122,0.1) 0%,transparent 60%);
-  pointer-events:none;
-}
-.hero-bg-mark{
-  position:absolute;
-  right:-40px;
-  top:50%;
-  transform:translateY(-50%);
-  font-family:'DM Serif Display',serif;
-  font-style:italic;
-  font-size:50vw;
-  line-height:1;
-  color:rgba(212,82,122,0.025);
-  user-select:none;
-  pointer-events:none;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pretty Little Red Flags | Dark Romance Book Box</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* HERO */
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(180deg, #1a0508 0%, var(--noir) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 20%, rgba(187,14,30,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 13vw, 9rem);
+      line-height: 0.9;
+      letter-spacing: 0.03em;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 .red { color: var(--crimson); }
+    .hero-sub {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      color: var(--blush);
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+    .hero-desc {
+      font-size: 0.88rem;
+      color: var(--gray);
+      max-width: 440px;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-.hero-inner{
-  max-width:1400px;
-  margin:0 auto;
-  width:100%;
-  position:relative;
-  z-index:1;
-}
-.hero h1{margin:0 0 36px;opacity:0;animation:up 0.9s ease 0.3s forwards;}
-.hero h1 .out{
-  -webkit-text-stroke:1.5px rgba(245,238,240,0.25);
-  color:transparent;
-  display:block;
-}
-.hero p.lead{opacity:0;animation:up 0.9s ease 0.5s forwards;font-size:17px;max-width:520px;}
-.hero-actions{
-  margin-top:44px;
-  display:flex;
-  gap:14px;
-  flex-wrap:wrap;
-  opacity:0;
-  animation:up 0.9s ease 0.7s forwards;
-}
-.hero-meta{
-  margin-top:60px;
-  display:flex;
-  align-items:center;
-  gap:24px;
-  flex-wrap:wrap;
-  opacity:0;
-  animation:up 0.9s ease 0.9s forwards;
-}
-.hero-meta-item{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-size:11px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:var(--muted);
-}
-.hero-meta-item strong{color:var(--rose);font-weight:500;}
-.hero-dot{
-  width:6px;
-  height:6px;
-  background:var(--rose);
-  border-radius:50%;
-  animation:pulse 2s ease-in-out infinite;
-}
-.hero-divider{width:1px;height:14px;background:var(--border);}
+    /* TAGLINE STRIP */
+    .tagline-strip {
+      background: var(--crimson);
+      padding: 0.9rem 2rem;
+      text-align: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1rem, 3vw, 1.4rem);
+      letter-spacing: 0.25em;
+      color: var(--white);
+      overflow: hidden;
+    }
 
-/* QUICK SHOP STRIP */
-.quick-shop{
-  border-top:1px solid var(--border);
-  padding:32px 48px;
-  background:var(--deep);
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:1px;
-  background:var(--border);
-}
-.qs-item{
-  background:var(--deep);
-  padding:28px 32px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
-  transition:background 0.3s;
-}
-.qs-item:hover{background:#180e1a;}
-.qs-info p:first-child{
-  font-family:'DM Serif Display',serif;
-  font-style:italic;
-  font-size:18px;
-  color:var(--cream);
-  margin-bottom:2px;
-}
-.qs-info p:last-child{font-size:12px;color:var(--muted);}
-.qs-price{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:30px;
-  color:var(--rose);
-  letter-spacing:1px;
-}
+    /* ABOUT STRIP */
+    .about-strip {
+      padding: 5rem 2rem;
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .about-strip h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      line-height: 1;
+      letter-spacing: 0.04em;
+      margin-bottom: 1.5rem;
+    }
+    .about-strip h2 span { color: var(--crimson); }
+    .about-strip p {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.9;
+      margin-bottom: 2rem;
+    }
 
-@keyframes up{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.3;transform:scale(0.5);}}
+    /* SHOP STRIP */
+    .shop-strip {
+      padding: 4rem 2rem 5rem;
+      background: #0a0a0a;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .shop-strip-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .shop-strip-header h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      letter-spacing: 0.05em;
+    }
+    .shop-strip-header h2 span { color: var(--crimson); }
+    .boxes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .box-card {
+      border: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: border-color 0.2s;
+      position: relative;
+    }
+    .box-card:hover { border-color: var(--crimson); }
+    .box-card .badge {
+      position: absolute;
+      top: -1px; right: -1px;
+      background: var(--crimson);
+      color: var(--white);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+    }
+    .box-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.5rem;
+    }
+    .box-card .price {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .box-card p {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.7;
+      margin-bottom: 1.8rem;
+    }
 
-@media(max-width:900px){
-  .hero{padding:60px 24px 48px;min-height:auto;}
-  .hero h1{font-size:clamp(56px,13vw,90px);}
-  .hero-actions{flex-direction:column;width:100%;}
-  .hero-actions .btn{width:100%;}
-  .hero-bg-mark{font-size:90vw;opacity:0.5;}
-  .quick-shop{grid-template-columns:1fr;padding:0;}
-  .qs-item{padding:22px 24px;}
-  .qs-price{font-size:24px;}
-  .hero-meta{gap:14px;}
-  .hero-divider{display:none;}
-}
-</style>
+    /* QUIZ CTA */
+    .quiz-cta {
+      padding: 5rem 2rem;
+      text-align: center;
+      background: linear-gradient(135deg, #1a0508, #0d0d0d);
+    }
+    .quiz-cta h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.8rem;
+    }
+    .quiz-cta h2 span { color: var(--crimson); }
+    .quiz-cta p {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      color: var(--blush);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      opacity: 0.85;
+    }
+
+    @media (max-width: 640px) {
+      .hero { min-height: 85vh; padding: 3rem 1.25rem; }
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .about-strip, .quiz-cta { padding: 3.5rem 1.25rem; }
+      .shop-strip { padding: 3rem 1.25rem 4rem; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="index.html" class="logo">P L R F <span>♥</span></a>
+  <a href="index.html" class="nav-logo">Pretty Little <span>Red Flags</span></a>
+  <button class="burger" id="navBurger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html" class="active">Home</a></li>
     <li><a href="shop.html">Shop</a></li>
+    <li><a href="quiz.html">Quiz</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="faq.html">FAQ</a></li>
-    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScLwkp5CEnkWy2M5h3ANWMDHqJUSgfdDurWJd3l76dX6Gk52w/viewform" target="_blank" class="nav-cta">Reader Quiz</a></li>
   </ul>
-  <div class="nav-burger" id="navBurger"><span></span><span></span><span></span></div>
 </nav>
-
-<main>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg-mark">♥</div>
-  <div class="hero-inner">
-    <div class="eyebrow">Books for girls who know better but read worse</div>
-    <h1 class="display">
-      Pretty
-      <em>Outside.</em>
-      <span class="out">Dangerous</span>
-      <span class="out">Inside.</span>
-    </h1>
-    <p class="lead">A luxury, dark BookTok-inspired book box with <strong>tissue-wrapped romance books, blush ribbons, gold details</strong>, treats, tabs, candles, and questionable taste in fictional men.</p>
-    <div class="hero-actions">
-      <a href="shop.html" class="btn btn-rose">Shop the Boxes</a>
-      <a href="about.html" class="btn btn-line">About the Drop</a>
+  <p class="hero-eyebrow">Dark Romance · Curated for You</p>
+  <h1>Pretty Little<br/><span class="red">Red Flags</span></h1>
+  <p class="hero-sub">Pretty outside. Dangerous inside.</p>
+  <p class="hero-desc">A curated dark romance book box for the girl who knows better and reads worse. Tissue-wrapped. Wax-sealed. Delivered with a kiss.</p>
+  <div class="hero-ctas">
+    <a href="shop.html" class="btn-primary">Shop the Boxes</a>
+    <a href="quiz.html" class="btn-line">Take the Quiz</a>
+  </div>
+</section>
+
+<!-- TAGLINE STRIP -->
+<div class="tagline-strip">
+  DARK ROMANCE · DELIVERED WITH A KISS · PRETTY OUTSIDE · DANGEROUS INSIDE
+</div>
+
+<!-- ABOUT STRIP -->
+<section class="about-strip">
+  <div class="divider" style="margin-bottom:2rem;">
+    <div class="divider-line"></div>
+    <span class="divider-icon">♥</span>
+    <div class="divider-line right"></div>
+  </div>
+  <p class="section-eyebrow">Who We Are</p>
+  <h2>Built for girls who<br/><span>know better.</span></h2>
+  <p>We kept looking for a book box that actually understood us. Not just "dark romance" as a label — but the specific kind of girl who annotates her favorites, who romanticizes the red flags, who wants her unboxing to feel like a scene from the book itself. It didn't exist. So we built it.</p>
+  <a href="about.html" class="btn-line">Our Story</a>
+</section>
+
+<!-- SHOP STRIP -->
+<section class="shop-strip">
+  <div class="shop-strip-header">
+    <p class="section-eyebrow">The Boxes</p>
+    <h2>Choose Your <span>Chaos</span></h2>
+  </div>
+  <div class="boxes-grid">
+    <div class="box-card">
+      <div class="badge">Limited · 10 Only</div>
+      <h3>Founder Box</h3>
+      <div class="price">$49.99</div>
+      <p>One curated dark romance read, tissue-wrapped and wax-sealed, with a mystery theme reveal and hand-selected extras. The original. The one that started it all.</p>
+      <a href="https://buy.stripe.com/4gM8wQe2Zeoc4tBgBm0gw03" class="btn-primary" target="_blank">Get Yours</a>
     </div>
-    <div class="hero-meta">
-      <div class="hero-meta-item">
-        <span class="hero-dot"></span>
-        <span>Founder Drop — <strong>Only 10 boxes</strong></span>
-      </div>
-      <div class="hero-divider"></div>
-      <div class="hero-meta-item">Curated · Tissue-wrapped · Personal</div>
+    <div class="box-card">
+      <h3>Deluxe Drama</h3>
+      <div class="price">$64.99+</div>
+      <p>Everything in the Founder Box, elevated. More extras, more drama, more of everything that makes opening the box feel like the first chapter of something dangerous.</p>
+      <a href="https://buy.stripe.com/6oU5kE6Axbc01hp1Gs0gw02" class="btn-primary" target="_blank">Get Yours</a>
     </div>
   </div>
 </section>
 
-<!-- QUICK SHOP STRIP -->
-<div class="quick-shop">
-  <a href="shop.html" class="qs-item">
-    <div class="qs-info">
-      <p>Founder Box</p>
-      <p>Limited — 10 only</p>
-    </div>
-    <div class="qs-price">$49.99</div>
-  </a>
-  <a href="shop.html" class="qs-item">
-    <div class="qs-info">
-      <p>Deluxe Drama</p>
-      <p>Premium tier</p>
-    </div>
-    <div class="qs-price">$64.99</div>
-  </a>
-</div>
+<!-- QUIZ CTA -->
+<section class="quiz-cta">
+  <p class="section-eyebrow">Not Sure Where to Start?</p>
+  <h2>Find Your <span>Reader Type</span></h2>
+  <p>Eight questions. One result. The box that was made for you.</p>
+  <a href="quiz.html" class="btn-primary">Take the Quiz</a>
+</section>
 
-</main>
-
-<!-- FOOTER -->
 <footer>
-  <div class="footer-top">
-    <div>
-      <div class="footer-logo">P L R F <span>♥</span></div>
-      <p class="footer-tag">"Pretty outside. Dangerous inside."</p>
-    </div>
-    <div class="footer-col">
-      <h4>Browse</h4>
-      <ul>
-        <li><a href="shop.html">Shop the Boxes</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScLwkp5CEnkWy2M5h3ANWMDHqJUSgfdDurWJd3l76dX6Gk52w/viewform" target="_blank">Reader Quiz</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Follow</h4>
-      <ul>
-        <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
-        <li><a href="https://tiktok.com" target="_blank">TikTok</a></li>
-        <li><a href="https://pinterest.com" target="_blank">Pinterest</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2026 Pretty Little Red Flags. All rights reserved.</p>
-    <p>Made with <span class="rose">♥</span> and questionable taste in men.</p>
-  </div>
+  <div class="footer-logo">Pretty Little <span>Red Flags</span></div>
+  <p class="footer-tagline">Pretty outside. Dangerous inside.</p>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="quiz.html">Quiz</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 Pretty Little Red Flags Book Box · prettylittlerf.com<br/>Made with <span class="rose">♥</span> and questionable taste in men.</p>
 </footer>
 
 <script>

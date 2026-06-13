@@ -1,293 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About — Pretty Little Red Flags</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<style>
-.page-head{
-  padding:80px 48px 48px;
-  text-align:center;
-}
-.page-head h1{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(56px,9vw,130px);
-  line-height:0.9;
-  margin-bottom:20px;
-}
-.page-head h1 em{
-  font-family:'DM Serif Display',serif;
-  font-style:italic;
-  color:var(--rose);
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Pretty Little Red Flags Book Box</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .about-hero {
+      padding: 5rem 2rem 3.5rem;
+      text-align: center;
+      background: linear-gradient(180deg, #1a0508 0%, var(--noir) 100%);
+      position: relative;
+    }
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(187,14,30,0.15) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .about-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 9vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.8rem;
+    }
+    .about-hero h1 span { color: var(--crimson); }
+    .about-hero p {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      color: var(--blush);
+      font-size: 1.1rem;
+      opacity: 0.85;
+    }
 
-/* MANIFESTO */
-.manifesto{
-  padding:60px 48px 80px;
-  max-width:900px;
-  margin:0 auto;
-  text-align:center;
-}
-.manifesto p{
-  font-family:'DM Serif Display',serif;
-  font-style:italic;
-  font-size:clamp(22px,2.6vw,32px);
-  line-height:1.5;
-  color:var(--cream);
-  margin-bottom:24px;
-}
-.manifesto p:last-child{
-  margin-bottom:0;
-  font-style:normal;
-  font-family:'DM Sans',sans-serif;
-  font-size:16px;
-  color:var(--muted);
-  line-height:1.8;
-}
-.manifesto .accent{color:var(--rose);}
+    /* MANIFESTO */
+    .manifesto {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .manifesto h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      letter-spacing: 0.04em;
+      margin-bottom: 2rem;
+      line-height: 1.05;
+    }
+    .manifesto h2 span { color: var(--crimson); }
+    .manifesto p {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.95;
+      margin-bottom: 1.5rem;
+    }
+    .manifesto .pull-quote {
+      border-left: 2px solid var(--crimson);
+      margin: 2.5rem 0;
+      padding: 0.5rem 1.5rem;
+      text-align: left;
+    }
+    .manifesto .pull-quote p {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--blush);
+      line-height: 1.6;
+      margin: 0;
+      opacity: 0.9;
+    }
 
-/* FOUNDER DROP BLOCK */
-.founder-drop{
-  background:var(--deep);
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  padding:80px 48px;
-  position:relative;
-  overflow:hidden;
-}
-.founder-drop::before{
-  content:'10';
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  font-family:'Bebas Neue',sans-serif;
-  font-size:48vw;
-  line-height:1;
-  color:rgba(212,82,122,0.03);
-  pointer-events:none;
-  user-select:none;
-}
-.fd-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:80px;
-  align-items:center;
-  max-width:1300px;
-  margin:0 auto;
-  position:relative;
-  z-index:1;
-}
-.fd-left h2{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(48px,7vw,100px);
-  line-height:0.9;
-  margin-bottom:24px;
-}
-.fd-left h2 em{
-  font-family:'DM Serif Display',serif;
-  font-style:italic;
-  color:var(--rose);
-}
-.fd-left .eyebrow{margin-bottom:24px;}
-.fd-right{
-  display:flex;
-  flex-direction:column;
-  gap:0;
-  background:var(--card);
-  border:1px solid var(--border);
-}
-.fd-row{
-  padding:18px 24px;
-  border-bottom:1px solid var(--border);
-  display:flex;
-  align-items:center;
-  gap:18px;
-}
-.fd-row:last-child{border-bottom:none;}
-.fd-row strong{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:24px;
-  color:var(--rose);
-  letter-spacing:1px;
-  min-width:70px;
-}
-.fd-row span{font-size:14px;color:var(--muted);}
-.fd-cta{
-  margin-top:32px;
-  display:flex;
-  gap:14px;
-  flex-wrap:wrap;
-}
+    /* VALUES STRIP */
+    .values-strip {
+      background: #0a0a0a;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 2rem;
+    }
+    .values-strip h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      letter-spacing: 0.05em;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .values-strip h2 span { color: var(--crimson); }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .value-item {
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+    }
+    .value-item .icon {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+    }
+    .value-item h3 {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      margin-bottom: 0.6rem;
+      color: var(--blush);
+    }
+    .value-item p {
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.7;
+    }
 
-/* VIBES */
-.vibes{
-  padding:80px 48px;
-  text-align:center;
-}
-.vibes-head{margin-bottom:48px;}
-.vibes-head .eyebrow{justify-content:center;}
-.vibes-head .eyebrow::before{display:none;}
-.vibes-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:1px;
-  background:var(--border);
-  border:1px solid var(--border);
-  max-width:1300px;
-  margin:0 auto;
-}
-.vibe{
-  background:var(--black);
-  padding:36px 28px;
-  text-align:left;
-  transition:background 0.3s;
-}
-.vibe:hover{background:var(--deep);}
-.vibe-icon{font-size:24px;margin-bottom:16px;}
-.vibe-name{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:22px;
-  letter-spacing:1px;
-  color:var(--cream);
-  margin-bottom:10px;
-  line-height:1;
-}
-.vibe-desc{font-size:13px;color:var(--muted);line-height:1.7;}
+    /* CTA */
+    .about-cta {
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .about-cta h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.8rem;
+    }
+    .about-cta h2 span { color: var(--crimson); }
+    .about-cta p {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      color: var(--blush);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      opacity: 0.8;
+    }
+    .cta-pair {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
 
-@media(max-width:900px){
-  .page-head{padding:60px 24px 36px;}
-  .manifesto{padding:48px 24px 60px;}
-  .founder-drop{padding:60px 24px;}
-  .fd-grid{grid-template-columns:1fr;gap:40px;}
-  .fd-cta{flex-direction:column;}
-  .fd-cta .btn{width:100%;}
-  .vibes{padding:60px 24px;}
-  .vibes-grid{grid-template-columns:1fr 1fr;}
-}
-@media(max-width:540px){
-  .vibes-grid{grid-template-columns:1fr;}
-}
-</style>
+    @media (max-width: 640px) {
+      .about-hero { padding: 3rem 1.25rem 2rem; }
+      .manifesto { padding: 3.5rem 1.25rem; }
+      .values-strip { padding: 3rem 1.25rem; }
+      .about-cta { padding: 3.5rem 1.25rem; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="index.html" class="logo">P L R F <span>♥</span></a>
+  <a href="index.html" class="nav-logo">Pretty Little <span>Red Flags</span></a>
+  <button class="burger" id="navBurger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Home</a></li>
     <li><a href="shop.html">Shop</a></li>
+    <li><a href="quiz.html">Quiz</a></li>
     <li><a href="about.html" class="active">About</a></li>
     <li><a href="faq.html">FAQ</a></li>
-    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScLwkp5CEnkWy2M5h3ANWMDHqJUSgfdDurWJd3l76dX6Gk52w/viewform" target="_blank" class="nav-cta">Reader Quiz</a></li>
   </ul>
-  <div class="nav-burger" id="navBurger"><span></span><span></span><span></span></div>
 </nav>
 
-<main>
-
-<!-- PAGE HEAD -->
-<section class="page-head">
-  <div class="eyebrow" style="justify-content:center;">♥ About PLRF</div>
-  <h1>The whole<br><em>brand.</em></h1>
+<section class="about-hero">
+  <p class="section-eyebrow">The Story</p>
+  <h1>Who We <span>Are</span></h1>
+  <p>Built by readers who know better and read worse.</p>
 </section>
 
-<!-- MANIFESTO -->
+<div class="divider"><div class="divider-line"></div><span class="divider-icon">♥</span><div class="divider-line right"></div></div>
+
 <section class="manifesto">
-  <p>Pretty Little Red Flags is for the girls who say <span class="accent">"red flag"</span> and then add to cart.</p>
-  <p>For the readers who pick the villain, root for the obsessive love interest, and finish the book in one sitting.</p>
-  <p>We make luxury, BookTok-inspired book boxes — curated to your reading taste. Tissue-wrapped like a secret. Pretty enough to film.</p>
-  <p>A gift from your most unhinged best friend, basically.</p>
+  <p class="section-eyebrow">The Origin</p>
+  <h2>We kept looking for something<br/><span>that didn't exist.</span></h2>
+
+  <p>Not just a book box. Not just a subscription with a novel and a candle thrown in. Something that actually understood the specific kind of reader we are — the one who annotates her favorites, who buys pretty things to romanticize an already over-romanticized hobby, who wants the unboxing to feel like the opening chapter of the book inside.</p>
+
+  <div class="pull-quote">
+    <p>"We wanted something wrapped in tissue paper like a gift from your most unhinged best friend. So we built it."</p>
+  </div>
+
+  <p>Pretty Little Red Flags is a curated dark romance book box for the girls who read the red flags and ask for more details anyway. Every box is hand-selected, tissue-wrapped, and wax-sealed — because the packaging is part of the story.</p>
+
+  <p>We are not a corporate operation. We are two readers who got tired of waiting for the thing we wanted to exist. This is for the girls who feel seen by morally gray men in fiction, who cry at five-star endings, who send their friends book recommendations with zero content warnings and a casual "it gets better after chapter four."</p>
+
+  <p>You know who you are. Welcome home.</p>
 </section>
 
-<!-- FOUNDER DROP -->
-<section class="founder-drop">
-  <div class="fd-grid">
-    <div class="fd-left">
-      <div class="eyebrow">♥ Founder Drop</div>
-      <h2>Only 10<br><em>boxes.</em></h2>
-      <p class="lead">We're launching small. The first drop is limited to ten founder boxes — once they're gone, they're gone. No restocks. No waitlist. Just the people who got in.</p>
-      <div class="fd-cta">
-        <a href="shop.html" class="btn btn-rose">Reserve Yours</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScLwkp5CEnkWy2M5h3ANWMDHqJUSgfdDurWJd3l76dX6Gk52w/viewform" target="_blank" class="btn btn-line">Take the Quiz</a>
-      </div>
+<!-- VALUES -->
+<section class="values-strip">
+  <p class="section-eyebrow" style="text-align:center;margin-bottom:0.5rem;">What We Believe</p>
+  <h2>The <span>Red Flag</span> Manifesto</h2>
+  <div class="values-grid">
+    <div class="value-item">
+      <div class="icon">🖤</div>
+      <h3>Curation over quantity</h3>
+      <p>Every single thing in your box was chosen on purpose. Nothing is filler. Everything is the point.</p>
     </div>
-    <div class="fd-right">
-      <div class="fd-row"><strong>01</strong><span>1 curated romance book — picked for your tropes</span></div>
-      <div class="fd-row"><strong>02</strong><span>Tissue-wrapped with a blush ribbon</span></div>
-      <div class="fd-row"><strong>03</strong><span>Annotation tabs + a bookmark</span></div>
-      <div class="fd-row"><strong>04</strong><span>A candle or sealed treat</span></div>
-      <div class="fd-row"><strong>05</strong><span>Luxury insert card + quote card</span></div>
-      <div class="fd-row"><strong>06</strong><span>Theme-matched packaging throughout</span></div>
+    <div class="value-item">
+      <div class="icon">🎀</div>
+      <h3>Presentation is everything</h3>
+      <p>The tissue paper matters. The wax seal matters. The way it feels to open the box matters. We believe in the ritual.</p>
+    </div>
+    <div class="value-item">
+      <div class="icon">♥</div>
+      <h3>The reader first</h3>
+      <p>We curate for the girl who actually reads — who annotates, who rereads, who recommends with zero disclaimers.</p>
+    </div>
+    <div class="value-item">
+      <div class="icon">🌹</div>
+      <h3>Pretty outside. Dangerous inside.</h3>
+      <p>The whole brand is a vibe. We're not watering it down for anyone.</p>
     </div>
   </div>
 </section>
 
-<!-- VIBES / QUIZ CATEGORIES -->
-<section class="vibes">
-  <div class="vibes-head">
-    <div class="eyebrow">♥ Quiz Vibes</div>
-    <h2 class="title">Choose your <em>chaos.</em></h2>
-  </div>
-  <div class="vibes-grid">
-    <div class="vibe">
-      <div class="vibe-icon">🌸</div>
-      <div class="vibe-name">Pretty Safe Red Flags</div>
-      <p class="vibe-desc">Popular romance, low trauma, crowd-friendly picks. The gateway drug.</p>
-    </div>
-    <div class="vibe">
-      <div class="vibe-icon">🖤</div>
-      <div class="vibe-name">Dark &amp; Dramatic</div>
-      <p class="vibe-desc">Morally gray men, obsession, mafia. You know why you're here.</p>
-    </div>
-    <div class="vibe">
-      <div class="vibe-icon">🔥</div>
-      <div class="vibe-name">Spicy but Soft</div>
-      <p class="vibe-desc">Hot romance with HEA energy. All the heat, all the feelings.</p>
-    </div>
-    <div class="vibe">
-      <div class="vibe-icon">📱</div>
-      <div class="vibe-name">Unhinged BookTok</div>
-      <p class="vibe-desc">Viral, intense, polarizing. You've seen it. You want it.</p>
-    </div>
+<!-- CTA -->
+<section class="about-cta">
+  <p class="section-eyebrow">Ready?</p>
+  <h2>Find Your <span>Reader Type</span></h2>
+  <p>Eight questions. The box that was built for you.</p>
+  <div class="cta-pair">
+    <a href="quiz.html" class="btn-primary">Take the Quiz</a>
+    <a href="shop.html" class="btn-line">Shop the Boxes</a>
   </div>
 </section>
 
-</main>
-
-<!-- FOOTER -->
 <footer>
-  <div class="footer-top">
-    <div>
-      <div class="footer-logo">P L R F <span>♥</span></div>
-      <p class="footer-tag">"Pretty outside. Dangerous inside."</p>
-    </div>
-    <div class="footer-col">
-      <h4>Browse</h4>
-      <ul>
-        <li><a href="shop.html">Shop the Boxes</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScLwkp5CEnkWy2M5h3ANWMDHqJUSgfdDurWJd3l76dX6Gk52w/viewform" target="_blank">Reader Quiz</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Follow</h4>
-      <ul>
-        <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
-        <li><a href="https://tiktok.com" target="_blank">TikTok</a></li>
-        <li><a href="https://pinterest.com" target="_blank">Pinterest</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2026 Pretty Little Red Flags. All rights reserved.</p>
-    <p>Made with <span class="rose">♥</span> and questionable taste in men.</p>
-  </div>
+  <div class="footer-logo">Pretty Little <span>Red Flags</span></div>
+  <p class="footer-tagline">Pretty outside. Dangerous inside.</p>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="quiz.html">Quiz</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 Pretty Little Red Flags Book Box · prettylittlerf.com<br/>Made with <span class="rose">♥</span> and questionable taste in men.</p>
 </footer>
 
 <script>

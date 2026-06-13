@@ -1,242 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FAQ — Pretty Little Red Flags</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<style>
-.page-head{
-  padding:80px 48px 48px;
-  text-align:center;
-}
-.page-head h1{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(56px,9vw,130px);
-  line-height:0.9;
-  margin-bottom:20px;
-}
-.page-head h1 em{
-  font-family:'DM Serif Display',serif;
-  font-style:italic;
-  color:var(--rose);
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ | Pretty Little Red Flags Book Box</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .faq-hero {
+      padding: 5rem 2rem 3.5rem;
+      text-align: center;
+      background: linear-gradient(180deg, #1a0508 0%, var(--noir) 100%);
+      position: relative;
+    }
+    .faq-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(187,14,30,0.15) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .faq-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 9vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.8rem;
+    }
+    .faq-hero h1 span { color: var(--crimson); }
+    .faq-hero p {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      color: var(--blush);
+      font-size: 1.1rem;
+      opacity: 0.85;
+    }
 
-/* FAQ */
-.faq-section{
-  padding:40px 48px 100px;
-  max-width:900px;
-  margin:0 auto;
-}
-.faq-item{
-  border-bottom:1px solid var(--border);
-}
-.faq-item:first-child{border-top:1px solid var(--border);}
-.faq-q{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:24px;
-  padding:28px 0;
-  cursor:pointer;
-  transition:padding 0.3s;
-}
-.faq-q:hover{padding-left:8px;}
-.faq-q-text{
-  font-family:'DM Serif Display',serif;
-  font-style:italic;
-  font-size:clamp(18px,2vw,24px);
-  color:var(--cream);
-  line-height:1.3;
-}
-.faq-toggle{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:30px;
-  color:var(--rose);
-  flex-shrink:0;
-  transition:transform 0.3s;
-  line-height:1;
-}
-.faq-a{
-  font-size:15px;
-  color:var(--muted);
-  line-height:1.8;
-  padding:0 60px 28px 0;
-  display:none;
-}
-.faq-item.open .faq-a{display:block;}
-.faq-item.open .faq-toggle{transform:rotate(45deg);}
+    /* FAQ LIST */
+    .faq-section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--white);
+      text-align: left;
+      padding: 1.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      gap: 1rem;
+      transition: color 0.2s;
+    }
+    .faq-question:hover { color: var(--blush); }
+    .faq-item.open .faq-question { color: var(--crimson); }
+    .faq-toggle {
+      font-size: 1.2rem;
+      color: var(--crimson);
+      flex-shrink: 0;
+      transition: transform 0.25s;
+      font-family: 'DM Serif Display', serif;
+    }
+    .faq-item.open .faq-toggle { transform: rotate(45deg); }
+    .faq-answer {
+      display: none;
+      padding: 0 0 1.5rem;
+      font-size: 0.85rem;
+      color: var(--gray);
+      line-height: 1.85;
+    }
+    .faq-item.open .faq-answer { display: block; }
 
-/* CTA banner */
-.cta-banner{
-  background:var(--deep);
-  border-top:1px solid var(--border);
-  padding:80px 48px;
-  text-align:center;
-}
-.cta-banner h2{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(40px,6vw,72px);
-  line-height:0.95;
-  margin-bottom:20px;
-}
-.cta-banner h2 em{
-  font-family:'DM Serif Display',serif;
-  font-style:italic;
-  color:var(--rose);
-}
-.cta-banner p{
-  font-size:15px;
-  color:var(--muted);
-  max-width:520px;
-  margin:0 auto 36px;
-  line-height:1.8;
-}
-.cta-actions{
-  display:flex;
-  justify-content:center;
-  gap:14px;
-  flex-wrap:wrap;
-}
+    /* CTA BANNER */
+    .faq-cta {
+      background: linear-gradient(135deg, #1a0508, #0d0d0d);
+      border-top: 1px solid var(--border);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .faq-cta h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.8rem;
+    }
+    .faq-cta h2 span { color: var(--crimson); }
+    .faq-cta p {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      color: var(--blush);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      opacity: 0.8;
+    }
+    .cta-pair {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
 
-@media(max-width:900px){
-  .page-head{padding:60px 24px 32px;}
-  .faq-section{padding:24px 24px 60px;}
-  .faq-q{padding:22px 0;}
-  .faq-a{padding-right:0;padding-bottom:22px;}
-  .cta-banner{padding:60px 24px;}
-  .cta-actions{flex-direction:column;width:100%;}
-  .cta-actions .btn{width:100%;}
-}
-</style>
+    @media (max-width: 640px) {
+      .faq-hero { padding: 3rem 1.25rem 2rem; }
+      .faq-section { padding: 2.5rem 1.25rem 4rem; }
+      .faq-cta { padding: 3rem 1.25rem; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="index.html" class="logo">P L R F <span>♥</span></a>
+  <a href="index.html" class="nav-logo">Pretty Little <span>Red Flags</span></a>
+  <button class="burger" id="navBurger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Home</a></li>
     <li><a href="shop.html">Shop</a></li>
+    <li><a href="quiz.html">Quiz</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="faq.html" class="active">FAQ</a></li>
-    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScLwkp5CEnkWy2M5h3ANWMDHqJUSgfdDurWJd3l76dX6Gk52w/viewform" target="_blank" class="nav-cta">Reader Quiz</a></li>
   </ul>
-  <div class="nav-burger" id="navBurger"><span></span><span></span><span></span></div>
 </nav>
 
-<main>
-
-<!-- PAGE HEAD -->
-<section class="page-head">
-  <div class="eyebrow" style="justify-content:center;">♥ FAQ</div>
-  <h1>Tiny details.<br><em>Big red flag energy.</em></h1>
+<section class="faq-hero">
+  <p class="section-eyebrow">Questions & Answers</p>
+  <h1>Got <span>Questions?</span></h1>
+  <p>We have answers. And probably a book recommendation.</p>
 </section>
 
-<!-- FAQ -->
+<div class="divider"><div class="divider-line"></div><span class="divider-icon">♥</span><div class="divider-line right"></div></div>
+
 <section class="faq-section">
 
   <div class="faq-item">
-    <div class="faq-q" onclick="toggle(this)">
-      <span class="faq-q-text">How does ordering work?</span>
+    <button class="faq-question" onclick="toggle(this)">
+      What's actually in the box?
       <span class="faq-toggle">+</span>
+    </button>
+    <div class="faq-answer">
+      Every box includes one curated dark romance novel, a mystery theme reveal card, a welcome letter, and carefully selected extras — all wrapped in blush tissue paper with a gold wax seal. The Deluxe Drama Box includes additional curated goodies on top of the essentials. We don't spoil the theme in advance — that's the whole point.
     </div>
-    <p class="faq-a">After checkout via Stripe, you'll be directed to our Reader Questionnaire so we can learn your preferences and curate your box with care.</p>
   </div>
 
   <div class="faq-item">
-    <div class="faq-q" onclick="toggle(this)">
-      <span class="faq-q-text">Is this a subscription?</span>
+    <button class="faq-question" onclick="toggle(this)">
+      How do you choose the book?
       <span class="faq-toggle">+</span>
+    </button>
+    <div class="faq-answer">
+      We read everything ourselves before it goes in a box. No exceptions. We curate based on tropes, spice level, and the overall reading experience — then we match it to the box theme. We take the reader questionnaire seriously, and if you have hard no's, we honor them.
     </div>
-    <p class="faq-a">We're starting with a limited 10-box Founder Drop. Monthly subscriptions may open after the first drop sells out — join our mailing list or follow on social to stay in the loop.</p>
   </div>
 
   <div class="faq-item">
-    <div class="faq-q" onclick="toggle(this)">
-      <span class="faq-q-text">Can I choose my spice level?</span>
+    <button class="faq-question" onclick="toggle(this)">
+      What if I already own the book?
       <span class="faq-toggle">+</span>
+    </button>
+    <div class="faq-answer">
+      Fill out the reader questionnaire after purchase and let us know what you've already read. We do our best to avoid duplicates — if we absolutely cannot avoid it, we'll reach out before shipping.
     </div>
-    <p class="faq-a">Yes — the Reader Questionnaire lets you share your spice level, hard no topics, favorite tropes, reading style, and aesthetic preferences. We curate around your answers.</p>
   </div>
 
   <div class="faq-item">
-    <div class="faq-q" onclick="toggle(this)">
-      <span class="faq-q-text">What about snacks or treats?</span>
+    <button class="faq-question" onclick="toggle(this)">
+      How spicy are the books?
       <span class="faq-toggle">+</span>
+    </button>
+    <div class="faq-answer">
+      It depends on the box tier and your questionnaire answers. We rate everything on our internal pepper scale (1 = sweet tension, 5 = call the fire department) and curate accordingly. The mystery theme reveal card always includes a spice level indicator so you know what you're getting into before you open the book.
     </div>
-    <p class="faq-a">We collect allergy and sensitivity notes in the Reader Questionnaire. Sealed treats are used whenever possible. If you have specific concerns, you can let us know in the form.</p>
   </div>
 
   <div class="faq-item">
-    <div class="faq-q" onclick="toggle(this)">
-      <span class="faq-q-text">When does my box ship?</span>
+    <button class="faq-question" onclick="toggle(this)">
+      Do you include content warnings?
       <span class="faq-toggle">+</span>
+    </button>
+    <div class="faq-answer">
+      Yes. Every box includes content flags on the mystery theme reveal card. We don't spoil the book — we flag the relevant warnings so you can make an informed choice before you start reading. Reader safety matters to us.
     </div>
-    <p class="faq-a">Boxes are curated and packed once your Reader Questionnaire is complete. You'll receive a shipping notification as soon as your box is on its way.</p>
   </div>
 
   <div class="faq-item">
-    <div class="faq-q" onclick="toggle(this)">
-      <span class="faq-q-text">What's the difference between the boxes?</span>
+    <button class="faq-question" onclick="toggle(this)">
+      Where do you ship?
       <span class="faq-toggle">+</span>
+    </button>
+    <div class="faq-answer">
+      Currently shipping within the US. International shipping is something we're working toward — sign up for the waitlist to be notified when it's available.
     </div>
-    <p class="faq-a">The <strong>Blind Date</strong> is a one-time mystery book with a trope label and small goodies. The <strong>Founder Box</strong> is our signature drop — limited to 10, with a curated book, tabs, candle/treat, and themed extras. The <strong>Deluxe Drama Box</strong> is our premium tier with a premium candle, collectible item, and upgraded packaging.</p>
   </div>
 
   <div class="faq-item">
-    <div class="faq-q" onclick="toggle(this)">
-      <span class="faq-q-text">Can I gift a box to someone?</span>
+    <button class="faq-question" onclick="toggle(this)">
+      What's your refund policy?
       <span class="faq-toggle">+</span>
+    </button>
+    <div class="faq-answer">
+      Because each box is curated and packed specifically for you, we don't accept returns on opened boxes. If your order arrives damaged or there's an issue with your shipment, reach out to us directly and we will make it right.
     </div>
-    <p class="faq-a">Yes! All of our boxes make perfect gifts. Just enter the recipient's shipping address at checkout and we'll handle the rest. They'll fill out their own Reader Questionnaire so the curation is personal.</p>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">
+      How do I take the reader quiz?
+      <span class="faq-toggle">+</span>
+    </button>
+    <div class="faq-answer">
+      Head to our Quiz page — it takes about two minutes and matches you to one of four reader types. We use your result to help recommend the right box for you. You can also fill out the full reader questionnaire after purchase to help us personalize your curation.
+    </div>
   </div>
 
 </section>
 
 <!-- CTA BANNER -->
-<section class="cta-banner">
-  <h2>Ready for your<br><em>fictional mistake?</em></h2>
-  <p>Pick a box. Take the quiz. Let us curate something gorgeous and slightly dangerous.</p>
-  <div class="cta-actions">
-    <a href="shop.html" class="btn btn-rose">Shop the Boxes</a>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLScLwkp5CEnkWy2M5h3ANWMDHqJUSgfdDurWJd3l76dX6Gk52w/viewform" target="_blank" class="btn btn-line">Take the Quiz</a>
+<section class="faq-cta">
+  <p class="section-eyebrow">Still here?</p>
+  <h2>You're Already <span>One of Us</span></h2>
+  <p>Take the quiz. Find your reader type. Get your box.</p>
+  <div class="cta-pair">
+    <a href="quiz.html" class="btn-primary">Take the Quiz</a>
+    <a href="shop.html" class="btn-line">Shop the Boxes</a>
   </div>
 </section>
 
-</main>
-
-<!-- FOOTER -->
 <footer>
-  <div class="footer-top">
-    <div>
-      <div class="footer-logo">P L R F <span>♥</span></div>
-      <p class="footer-tag">"Pretty outside. Dangerous inside."</p>
-    </div>
-    <div class="footer-col">
-      <h4>Browse</h4>
-      <ul>
-        <li><a href="shop.html">Shop the Boxes</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScLwkp5CEnkWy2M5h3ANWMDHqJUSgfdDurWJd3l76dX6Gk52w/viewform" target="_blank">Reader Quiz</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Follow</h4>
-      <ul>
-        <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
-        <li><a href="https://tiktok.com" target="_blank">TikTok</a></li>
-        <li><a href="https://pinterest.com" target="_blank">Pinterest</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2026 Pretty Little Red Flags. All rights reserved.</p>
-    <p>Made with <span class="rose">♥</span> and questionable taste in men.</p>
-  </div>
+  <div class="footer-logo">Pretty Little <span>Red Flags</span></div>
+  <p class="footer-tagline">Pretty outside. Dangerous inside.</p>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="quiz.html">Quiz</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 Pretty Little Red Flags Book Box · prettylittlerf.com<br/>Made with <span class="rose">♥</span> and questionable taste in men.</p>
 </footer>
 
 <script>
@@ -246,11 +257,11 @@
     burger.classList.toggle('open');
     links.classList.toggle('open');
   });
-  function toggle(el){
+  function toggle(el) {
     const item = el.parentElement;
     const isOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if(!isOpen) item.classList.add('open');
+    if (!isOpen) item.classList.add('open');
   }
 </script>
 </body>
