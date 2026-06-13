@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Pretty Little Red Flags Book Box</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .about-hero {
+      padding: 5rem 2rem 3.5rem;
+      text-align: center;
+      background: linear-gradient(180deg, #1a0508 0%, var(--noir) 100%);
+      position: relative;
+    }
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(187,14,30,0.15) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .about-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 9vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.8rem;
+    }
+    .about-hero h1 span { color: var(--crimson); }
+    .about-hero p {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      color: var(--blush);
+      font-size: 1.1rem;
+      opacity: 0.85;
+    }
+
+    /* MANIFESTO */
+    .manifesto {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .manifesto h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      letter-spacing: 0.04em;
+      margin-bottom: 2rem;
+      line-height: 1.05;
+    }
+    .manifesto h2 span { color: var(--crimson); }
+    .manifesto p {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.95;
+      margin-bottom: 1.5rem;
+    }
+    .manifesto .pull-quote {
+      border-left: 2px solid var(--crimson);
+      margin: 2.5rem 0;
+      padding: 0.5rem 1.5rem;
+      text-align: left;
+    }
+    .manifesto .pull-quote p {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--blush);
+      line-height: 1.6;
+      margin: 0;
+      opacity: 0.9;
+    }
+
+    /* VALUES STRIP */
+    .values-strip {
+      background: #0a0a0a;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 2rem;
+    }
+    .values-strip h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      letter-spacing: 0.05em;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .values-strip h2 span { color: var(--crimson); }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .value-item {
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+    }
+    .value-item .icon {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+    }
+    .value-item h3 {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      margin-bottom: 0.6rem;
+      color: var(--blush);
+    }
+    .value-item p {
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* CTA */
+    .about-cta {
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .about-cta h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.8rem;
+    }
+    .about-cta h2 span { color: var(--crimson); }
+    .about-cta p {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      color: var(--blush);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      opacity: 0.8;
+    }
+    .cta-pair {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 640px) {
+      .about-hero { padding: 3rem 1.25rem 2rem; }
+      .manifesto { padding: 3.5rem 1.25rem; }
+      .values-strip { padding: 3rem 1.25rem; }
+      .about-cta { padding: 3.5rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Pretty Little <span>Red Flags</span></a>
+  <button class="burger" id="navBurger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="quiz.html">Quiz</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+</nav>
+
+<section class="about-hero">
+  <p class="section-eyebrow">The Story</p>
+  <h1>Who We <span>Are</span></h1>
+  <p>Built by readers who know better and read worse.</p>
+</section>
+
+<div class="divider"><div class="divider-line"></div><span class="divider-icon">♥</span><div class="divider-line right"></div></div>
+
+<section class="manifesto">
+  <p class="section-eyebrow">The Origin</p>
+  <h2>We kept looking for something<br/><span>that didn't exist.</span></h2>
+
+  <p>Not just a book box. Not just a subscription with a novel and a candle thrown in. Something that actually understood the specific kind of reader we are — the one who annotates her favorites, who buys pretty things to romanticize an already over-romanticized hobby, who wants the unboxing to feel like the opening chapter of the book inside.</p>
+
+  <div class="pull-quote">
+    <p>"We wanted something wrapped in tissue paper like a gift from your most unhinged best friend. So we built it."</p>
+  </div>
+
+  <p>Pretty Little Red Flags is a curated dark romance book box for the girls who read the red flags and ask for more details anyway. Every box is hand-selected, tissue-wrapped, and wax-sealed — because the packaging is part of the story.</p>
+
+  <p>We are not a corporate operation. We are two readers who got tired of waiting for the thing we wanted to exist. This is for the girls who feel seen by morally gray men in fiction, who cry at five-star endings, who send their friends book recommendations with zero content warnings and a casual "it gets better after chapter four."</p>
+
+  <p>You know who you are. Welcome home.</p>
+</section>
+
+<!-- VALUES -->
+<section class="values-strip">
+  <p class="section-eyebrow" style="text-align:center;margin-bottom:0.5rem;">What We Believe</p>
+  <h2>The <span>Red Flag</span> Manifesto</h2>
+  <div class="values-grid">
+    <div class="value-item">
+      <div class="icon">🖤</div>
+      <h3>Curation over quantity</h3>
+      <p>Every single thing in your box was chosen on purpose. Nothing is filler. Everything is the point.</p>
+    </div>
+    <div class="value-item">
+      <div class="icon">🎀</div>
+      <h3>Presentation is everything</h3>
+      <p>The tissue paper matters. The wax seal matters. The way it feels to open the box matters. We believe in the ritual.</p>
+    </div>
+    <div class="value-item">
+      <div class="icon">♥</div>
+      <h3>The reader first</h3>
+      <p>We curate for the girl who actually reads — who annotates, who rereads, who recommends with zero disclaimers.</p>
+    </div>
+    <div class="value-item">
+      <div class="icon">🌹</div>
+      <h3>Pretty outside. Dangerous inside.</h3>
+      <p>The whole brand is a vibe. We're not watering it down for anyone.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="about-cta">
+  <p class="section-eyebrow">Ready?</p>
+  <h2>Find Your <span>Reader Type</span></h2>
+  <p>Eight questions. The box that was built for you.</p>
+  <div class="cta-pair">
+    <a href="quiz.html" class="btn-primary">Take the Quiz</a>
+    <a href="shop.html" class="btn-line">Shop the Boxes</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Pretty Little <span>Red Flags</span></div>
+  <p class="footer-tagline">Pretty outside. Dangerous inside.</p>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="quiz.html">Quiz</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 Pretty Little Red Flags Book Box · prettylittlerf.com<br/>Made with <span class="rose">♥</span> and questionable taste in men.</p>
+</footer>
+
+<script>
+  const burger = document.getElementById('navBurger');
+  const links = document.getElementById('navLinks');
+  burger?.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    links.classList.toggle('open');
+  });
+</script>
+</body>
+</html>

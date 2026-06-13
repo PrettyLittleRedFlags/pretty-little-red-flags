@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ | Pretty Little Red Flags Book Box</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .faq-hero {
+      padding: 5rem 2rem 3.5rem;
+      text-align: center;
+      background: linear-gradient(180deg, #1a0508 0%, var(--noir) 100%);
+      position: relative;
+    }
+    .faq-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(187,14,30,0.15) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .faq-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 9vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.8rem;
+    }
+    .faq-hero h1 span { color: var(--crimson); }
+    .faq-hero p {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      color: var(--blush);
+      font-size: 1.1rem;
+      opacity: 0.85;
+    }
+
+    /* FAQ LIST */
+    .faq-section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--white);
+      text-align: left;
+      padding: 1.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      gap: 1rem;
+      transition: color 0.2s;
+    }
+    .faq-question:hover { color: var(--blush); }
+    .faq-item.open .faq-question { color: var(--crimson); }
+    .faq-toggle {
+      font-size: 1.2rem;
+      color: var(--crimson);
+      flex-shrink: 0;
+      transition: transform 0.25s;
+      font-family: 'DM Serif Display', serif;
+    }
+    .faq-item.open .faq-toggle { transform: rotate(45deg); }
+    .faq-answer {
+      display: none;
+      padding: 0 0 1.5rem;
+      font-size: 0.85rem;
+      color: var(--gray);
+      line-height: 1.85;
+    }
+    .faq-item.open .faq-answer { display: block; }
+
+    /* CTA BANNER */
+    .faq-cta {
+      background: linear-gradient(135deg, #1a0508, #0d0d0d);
+      border-top: 1px solid var(--border);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .faq-cta h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.8rem;
+    }
+    .faq-cta h2 span { color: var(--crimson); }
+    .faq-cta p {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      color: var(--blush);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      opacity: 0.8;
+    }
+    .cta-pair {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 640px) {
+      .faq-hero { padding: 3rem 1.25rem 2rem; }
+      .faq-section { padding: 2.5rem 1.25rem 4rem; }
+      .faq-cta { padding: 3rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Pretty Little <span>Red Flags</span></a>
+  <button class="burger" id="navBurger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="quiz.html">Quiz</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="faq.html" class="active">FAQ</a></li>
+  </ul>
+</nav>
+
+<section class="faq-hero">
+  <p class="section-eyebrow">Questions & Answers</p>
+  <h1>Got <span>Questions?</span></h1>
+  <p>We have answers. And probably a book recommendation.</p>
+</section>
+
+<div class="divider"><div class="divider-line"></div><span class="divider-icon">♥</span><div class="divider-line right"></div></div>
+
+<section class="faq-section">
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">
+      What's actually in the box?
+      <span class="faq-toggle">+</span>
+    </button>
+    <div class="faq-answer">
+      Every box includes one curated dark romance novel, a mystery theme reveal card, a welcome letter, and carefully selected extras — all wrapped in blush tissue paper with a gold wax seal. The Deluxe Drama Box includes additional curated goodies on top of the essentials. We don't spoil the theme in advance — that's the whole point.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">
+      How do you choose the book?
+      <span class="faq-toggle">+</span>
+    </button>
+    <div class="faq-answer">
+      We read everything ourselves before it goes in a box. No exceptions. We curate based on tropes, spice level, and the overall reading experience — then we match it to the box theme. We take the reader questionnaire seriously, and if you have hard no's, we honor them.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">
+      What if I already own the book?
+      <span class="faq-toggle">+</span>
+    </button>
+    <div class="faq-answer">
+      Fill out the reader questionnaire after purchase and let us know what you've already read. We do our best to avoid duplicates — if we absolutely cannot avoid it, we'll reach out before shipping.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">
+      How spicy are the books?
+      <span class="faq-toggle">+</span>
+    </button>
+    <div class="faq-answer">
+      It depends on the box tier and your questionnaire answers. We rate everything on our internal pepper scale (1 = sweet tension, 5 = call the fire department) and curate accordingly. The mystery theme reveal card always includes a spice level indicator so you know what you're getting into before you open the book.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">
+      Do you include content warnings?
+      <span class="faq-toggle">+</span>
+    </button>
+    <div class="faq-answer">
+      Yes. Every box includes content flags on the mystery theme reveal card. We don't spoil the book — we flag the relevant warnings so you can make an informed choice before you start reading. Reader safety matters to us.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">
+      Where do you ship?
+      <span class="faq-toggle">+</span>
+    </button>
+    <div class="faq-answer">
+      Currently shipping within the US. International shipping is something we're working toward — sign up for the waitlist to be notified when it's available.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">
+      What's your refund policy?
+      <span class="faq-toggle">+</span>
+    </button>
+    <div class="faq-answer">
+      Because each box is curated and packed specifically for you, we don't accept returns on opened boxes. If your order arrives damaged or there's an issue with your shipment, reach out to us directly and we will make it right.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" onclick="toggle(this)">
+      How do I take the reader quiz?
+      <span class="faq-toggle">+</span>
+    </button>
+    <div class="faq-answer">
+      Head to our Quiz page — it takes about two minutes and matches you to one of four reader types. We use your result to help recommend the right box for you. You can also fill out the full reader questionnaire after purchase to help us personalize your curation.
+    </div>
+  </div>
+
+</section>
+
+<!-- CTA BANNER -->
+<section class="faq-cta">
+  <p class="section-eyebrow">Still here?</p>
+  <h2>You're Already <span>One of Us</span></h2>
+  <p>Take the quiz. Find your reader type. Get your box.</p>
+  <div class="cta-pair">
+    <a href="quiz.html" class="btn-primary">Take the Quiz</a>
+    <a href="shop.html" class="btn-line">Shop the Boxes</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Pretty Little <span>Red Flags</span></div>
+  <p class="footer-tagline">Pretty outside. Dangerous inside.</p>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="quiz.html">Quiz</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 Pretty Little Red Flags Book Box · prettylittlerf.com<br/>Made with <span class="rose">♥</span> and questionable taste in men.</p>
+</footer>
+
+<script>
+  const burger = document.getElementById('navBurger');
+  const links = document.getElementById('navLinks');
+  burger?.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    links.classList.toggle('open');
+  });
+  function toggle(el) {
+    const item = el.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+</body>
+</html>
