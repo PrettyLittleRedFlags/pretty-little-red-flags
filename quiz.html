@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --crimson: #BB0E1E;
       --blush: #F6D6DA;
@@ -16,276 +15,43 @@
       --parchment: #fdf6f0;
       --white: #ffffff;
     }
-
-    body {
-      background-color: var(--noir);
-      color: var(--white);
-      font-family: 'DM Sans', sans-serif;
-      min-height: 100vh;
-    }
-
-    /* NAV */
-    nav {
-      background-color: var(--noir);
-      border-bottom: 1px solid rgba(187, 14, 30, 0.3);
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.4rem;
-      letter-spacing: 0.08em;
-      color: var(--white);
-      text-decoration: none;
-    }
-
-    .nav-logo span {
-      color: var(--crimson);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: rgba(255,255,255,0.7);
-      text-decoration: none;
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--crimson);
-    }
-
-    /* HERO */
-    .quiz-hero {
-      background: linear-gradient(180deg, #1a0508 0%, var(--noir) 100%);
-      padding: 5rem 2rem 3rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .quiz-hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(187,14,30,0.15) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-eyebrow {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-
-    .hero-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3.5rem, 9vw, 7rem);
-      line-height: 0.95;
-      letter-spacing: 0.03em;
-      color: var(--white);
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-title span {
-      color: var(--crimson);
-    }
-
-    .hero-subtitle {
-      font-family: 'DM Serif Display', serif;
-      font-style: italic;
-      font-size: clamp(1rem, 2.5vw, 1.4rem);
-      color: var(--blush);
-      margin-bottom: 1.5rem;
-      opacity: 0.9;
-    }
-
-    .hero-desc {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.55);
-      max-width: 480px;
-      margin: 0 auto;
-      line-height: 1.7;
-      letter-spacing: 0.02em;
-    }
-
-    /* DIVIDER */
-    .divider {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      padding: 2rem 2rem 0;
-    }
-
-    .divider-line {
-      height: 1px;
-      width: 60px;
-      background: linear-gradient(90deg, transparent, var(--crimson));
-    }
-
-    .divider-line.right {
-      background: linear-gradient(90deg, var(--crimson), transparent);
-    }
-
-    .divider-icon {
-      color: var(--crimson);
-      font-size: 0.8rem;
-    }
-
-    /* QUIZ EMBED SECTION */
-    .quiz-section {
-      padding: 2rem 1rem 4rem;
-      max-width: 860px;
-      margin: 0 auto;
-    }
-
-    .quiz-embed-wrapper {
-      border-radius: 4px;
-      overflow: hidden;
-      border: 1px solid rgba(187, 14, 30, 0.2);
-      background: var(--parchment);
-    }
-
-    .quiz-embed-wrapper iframe,
-    .quiz-embed-wrapper > div {
-      width: 100% !important;
-      height: auto !important;
-    }
-
-    /* RESULT TEASER STRIP */
-    .result-teaser {
-      background: linear-gradient(135deg, #1a0508, #0d0d0d);
-      border-top: 1px solid rgba(187,14,30,0.2);
-      border-bottom: 1px solid rgba(187,14,30,0.2);
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-
-    .result-teaser h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.1rem;
-      letter-spacing: 0.2em;
-      color: var(--gold);
-      margin-bottom: 2rem;
-      text-transform: uppercase;
-    }
-
-    .result-types {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .result-pill {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(187,14,30,0.3);
-      border-radius: 2px;
-      padding: 0.75rem 1.25rem;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
-      font-family: 'DM Sans', sans-serif;
-    }
-
-    .result-pill strong {
-      display: block;
-      font-size: 1.1rem;
-      color: var(--white);
-      font-family: 'DM Serif Display', serif;
-      font-style: italic;
-      font-weight: normal;
-      letter-spacing: 0.02em;
-      text-transform: none;
-      margin-bottom: 0.2rem;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #080808;
-      border-top: 1px solid rgba(187,14,30,0.2);
-      padding: 2.5rem 2rem;
-      text-align: center;
-    }
-
-    .footer-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.2rem;
-      letter-spacing: 0.1em;
-      color: var(--white);
-      margin-bottom: 0.5rem;
-    }
-
+    body { background-color: var(--noir); color: var(--white); font-family: 'DM Sans', sans-serif; min-height: 100vh; }
+    nav { background-color: var(--noir); border-bottom: 1px solid rgba(187,14,30,0.3); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.08em; color: var(--white); text-decoration: none; }
+    .nav-logo span { color: var(--crimson); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--crimson); }
+    .quiz-hero { background: linear-gradient(180deg, #1a0508 0%, var(--noir) 100%); padding: 5rem 2rem 3rem; text-align: center; position: relative; overflow: hidden; }
+    .quiz-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 50% 0%, rgba(187,14,30,0.15) 0%, transparent 70%); pointer-events: none; }
+    .hero-eyebrow { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 9vw, 7rem); line-height: 0.95; color: var(--white); margin-bottom: 0.5rem; }
+    .hero-title span { color: var(--crimson); }
+    .hero-subtitle { font-family: 'DM Serif Display', serif; font-style: italic; font-size: clamp(1rem, 2.5vw, 1.4rem); color: var(--blush); margin-bottom: 1.5rem; opacity: 0.9; }
+    .hero-desc { font-size: 0.9rem; color: rgba(255,255,255,0.55); max-width: 480px; margin: 0 auto; line-height: 1.7; }
+    .divider { display: flex; align-items: center; justify-content: center; gap: 1rem; padding: 2rem 2rem 0; }
+    .divider-line { height: 1px; width: 60px; background: linear-gradient(90deg, transparent, var(--crimson)); }
+    .divider-line.right { background: linear-gradient(90deg, var(--crimson), transparent); }
+    .divider-icon { color: var(--crimson); font-size: 0.8rem; }
+    .quiz-section { padding: 2rem 1rem 4rem; max-width: 860px; margin: 0 auto; }
+    .quiz-embed-wrapper { border-radius: 4px; overflow: hidden; border: 1px solid rgba(187,14,30,0.2); }
+    .result-teaser { background: linear-gradient(135deg, #1a0508, #0d0d0d); border-top: 1px solid rgba(187,14,30,0.2); border-bottom: 1px solid rgba(187,14,30,0.2); padding: 3rem 2rem; text-align: center; }
+    .result-teaser h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 2rem; text-transform: uppercase; }
+    .result-types { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; max-width: 700px; margin: 0 auto; }
+    .result-pill { background: rgba(255,255,255,0.04); border: 1px solid rgba(187,14,30,0.3); border-radius: 2px; padding: 0.75rem 1.25rem; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+    .result-pill strong { display: block; font-size: 1.1rem; color: var(--white); font-family: 'DM Serif Display', serif; font-style: italic; font-weight: normal; text-transform: none; margin-bottom: 0.2rem; }
+    footer { background: #080808; border-top: 1px solid rgba(187,14,30,0.2); padding: 2.5rem 2rem; text-align: center; }
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.1em; color: var(--white); margin-bottom: 0.5rem; }
     .footer-logo span { color: var(--crimson); }
-
-    .footer-tagline {
-      font-family: 'DM Serif Display', serif;
-      font-style: italic;
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.35);
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      list-style: none;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: rgba(255,255,255,0.4);
-      text-decoration: none;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
+    .footer-tagline { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 0.85rem; color: rgba(255,255,255,0.35); margin-bottom: 1.5rem; }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.2s; }
     .footer-links a:hover { color: var(--crimson); }
-
-    .footer-copy {
-      margin-top: 1.5rem;
-      font-size: 0.65rem;
-      color: rgba(255,255,255,0.2);
-      letter-spacing: 0.08em;
-    }
-
-    /* MOBILE */
-    @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .quiz-hero { padding: 3rem 1.25rem 2rem; }
-      .quiz-section { padding: 1.5rem 0.75rem 3rem; }
-      .result-types { gap: 0.75rem; }
-      .result-pill { padding: 0.6rem 1rem; }
-    }
+    .footer-copy { margin-top: 1.5rem; font-size: 0.65rem; color: rgba(255,255,255,0.2); }
+    @media (max-width: 640px) { .nav-links { display: none; } .quiz-hero { padding: 3rem 1.25rem 2rem; } .quiz-section { padding: 1.5rem 0.75rem 3rem; } }
   </style>
 </head>
 <body>
-
-  <!-- NAV -->
   <nav>
     <a href="index.html" class="nav-logo">Pretty Little <span>Red Flags</span></a>
     <ul class="nav-links">
@@ -296,30 +62,23 @@
       <li><a href="faq.html">FAQ</a></li>
     </ul>
   </nav>
-
-  <!-- HERO -->
   <section class="quiz-hero">
     <p class="hero-eyebrow">Pretty Little Red Flags · Reader Quiz</p>
     <h1 class="hero-title">What's Your<br/><span>Red Flag</span><br/>Reader Type?</h1>
     <p class="hero-subtitle">Eight questions. One result. Zero regrets.</p>
     <p class="hero-desc">Tell us who you are and we'll tell you exactly which box was made for you — and which fictional man you'd absolutely ignore every warning sign for.</p>
   </section>
-
   <div class="divider">
     <div class="divider-line"></div>
     <span class="divider-icon">♥</span>
     <div class="divider-line right"></div>
   </div>
-
-  <!-- QUIZ EMBED -->
   <section class="quiz-section">
     <div class="quiz-embed-wrapper">
-      <div style="width:100%;" data-fillout-id="4Hr3JPxSvHus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
+      <div data-fillout-id="4Hr3JPxSvHus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize style="width:100%;"></div>
       <script src="https://server.fillout.com/embed/v1/"></script>
     </div>
   </section>
-
-  <!-- RESULT TEASER -->
   <section class="result-teaser">
     <h3>Four types. Which one are you?</h3>
     <div class="result-types">
@@ -329,8 +88,6 @@
       <div class="result-pill"><strong>🎀 Pretty Safe Red Flags</strong>soft launching your villain era.</div>
     </div>
   </section>
-
-  <!-- FOOTER -->
   <footer>
     <div class="footer-logo">Pretty Little <span>Red Flags</span></div>
     <p class="footer-tagline">Pretty outside. Dangerous inside.</p>
@@ -343,6 +100,5 @@
     </ul>
     <p class="footer-copy">© 2025 Pretty Little Red Flags Book Box · prettylittlerf.com</p>
   </footer>
-
 </body>
 </html>
