@@ -1,131 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FAQ | Pretty Little Red Flags Book Box</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    .faq-hero {
-      padding: 5rem 2rem 3.5rem;
-      text-align: center;
-      background: linear-gradient(180deg, #1a0508 0%, var(--noir) 100%);
-      position: relative;
-    }
-    .faq-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(187,14,30,0.15) 0%, transparent 65%);
-      pointer-events: none;
-    }
-    .faq-hero h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3.5rem, 9vw, 6.5rem);
-      line-height: 0.95;
-      letter-spacing: 0.03em;
-      margin-bottom: 0.8rem;
-    }
-    .faq-hero h1 span { color: var(--crimson); }
-    .faq-hero p {
-      font-family: 'DM Serif Display', serif;
-      font-style: italic;
-      color: var(--blush);
-      font-size: 1.1rem;
-      opacity: 0.85;
-    }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>FAQ | Pretty Little Red Flags Book Box</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--crimson:#BB0E1E;--crimson-dark:#8a0a15;--blush:#F6D6DA;--noir:#0D0D0D;--deep:#120205;--gold:#D4AF37;--white:#ffffff;--muted:rgba(255,255,255,0.5);--border:rgba(187,14,30,0.25);}
+html{scroll-behavior:smooth;}
+body{background:var(--noir);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(13,13,13,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:1.1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.1em;color:var(--white);text-decoration:none;z-index:600;position:relative;}
+.nav-logo span{color:var(--crimson);}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--crimson);}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px;z-index:600;position:relative;}
+.burger span{display:block;width:24px;height:2px;background:var(--white);transition:all 0.3s ease;transform-origin:center;}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.burger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-nav{display:none;position:fixed;inset:0;background:rgba(13,13,13,0.98);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;z-index:400;}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{color:rgba(255,255,255,0.8);text-decoration:none;font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:0.1em;transition:color 0.2s;}
+.mobile-nav a:hover,.mobile-nav a.active{color:var(--crimson);}
 
-    /* FAQ LIST */
-    .faq-section {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 4rem 2rem 6rem;
-    }
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-    }
-    .faq-question {
-      width: 100%;
-      background: none;
-      border: none;
-      color: var(--white);
-      text-align: left;
-      padding: 1.5rem 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.92rem;
-      font-weight: 400;
-      letter-spacing: 0.03em;
-      gap: 1rem;
-      transition: color 0.2s;
-    }
-    .faq-question:hover { color: var(--blush); }
-    .faq-item.open .faq-question { color: var(--crimson); }
-    .faq-toggle {
-      font-size: 1.2rem;
-      color: var(--crimson);
-      flex-shrink: 0;
-      transition: transform 0.25s;
-      font-family: 'DM Serif Display', serif;
-    }
-    .faq-item.open .faq-toggle { transform: rotate(45deg); }
-    .faq-answer {
-      display: none;
-      padding: 0 0 1.5rem;
-      font-size: 0.85rem;
-      color: var(--gray);
-      line-height: 1.85;
-    }
-    .faq-item.open .faq-answer { display: block; }
+.page-hero{padding:9rem 2rem 4rem;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(187,14,30,0.18) 0%,var(--deep) 50%,var(--noir) 100%);position:relative;}
+.page-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--crimson),transparent);}
+.page-hero .eyebrow{font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.page-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,10vw,7rem);line-height:0.9;letter-spacing:0.03em;}
+.page-hero h1 span{color:var(--crimson);}
+.page-hero .sub{font-family:'Playfair Display',serif;font-style:italic;color:var(--blush);font-size:1.1rem;margin-top:1rem;opacity:0.85;}
 
-    /* CTA BANNER */
-    .faq-cta {
-      background: linear-gradient(135deg, #1a0508, #0d0d0d);
-      border-top: 1px solid var(--border);
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-    .faq-cta h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2rem, 5vw, 3rem);
-      letter-spacing: 0.05em;
-      margin-bottom: 0.8rem;
-    }
-    .faq-cta h2 span { color: var(--crimson); }
-    .faq-cta p {
-      font-family: 'DM Serif Display', serif;
-      font-style: italic;
-      color: var(--blush);
-      font-size: 1rem;
-      margin-bottom: 2rem;
-      opacity: 0.8;
-    }
-    .cta-pair {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+.ticker{background:var(--crimson);padding:0.9rem 0;overflow:hidden;white-space:nowrap;}
+.ticker-inner{display:inline-flex;animation:ticker 20s linear infinite;}
+.ticker-item{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.25em;color:var(--white);padding:0 2rem;}
+.ticker-item span{color:rgba(255,255,255,0.5);margin-left:2rem;}
+@keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 
-    @media (max-width: 640px) {
-      .faq-hero { padding: 3rem 1.25rem 2rem; }
-      .faq-section { padding: 2.5rem 1.25rem 4rem; }
-      .faq-cta { padding: 3rem 1.25rem; }
-    }
-  </style>
+/* FAQ */
+.faq-section{max-width:720px;margin:0 auto;padding:5rem 2rem 6rem;}
+.faq-item{border-bottom:1px solid var(--border);}
+.faq-btn{width:100%;background:none;border:none;color:var(--white);text-align:left;padding:1.6rem 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.92rem;font-weight:400;letter-spacing:0.02em;gap:1rem;transition:color 0.2s;}
+.faq-btn:hover{color:var(--blush);}
+.faq-item.open .faq-btn{color:var(--crimson);}
+.faq-toggle{font-family:'Playfair Display',serif;font-style:italic;font-size:1.4rem;color:var(--crimson);flex-shrink:0;transition:transform 0.3s;line-height:1;}
+.faq-item.open .faq-toggle{transform:rotate(45deg);}
+.faq-answer{display:none;padding:0 0 1.6rem;font-size:0.85rem;color:var(--muted);line-height:1.9;}
+.faq-item.open .faq-answer{display:block;}
+
+/* CTA */
+.faq-cta{background:var(--crimson);padding:5rem 2rem;text-align:center;}
+.faq-cta .eyebrow{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:1rem;}
+.faq-cta h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,7vw,5rem);letter-spacing:0.04em;margin-bottom:0.8rem;line-height:1;}
+.faq-cta .sub{font-family:'Playfair Display',serif;font-style:italic;color:rgba(255,255,255,0.75);font-size:1.1rem;margin-bottom:2.5rem;}
+.cta-pair{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-dark{display:inline-block;background:var(--noir);color:var(--white);text-decoration:none;font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;padding:1rem 2.2rem;transition:background 0.2s,transform 0.15s;}
+.btn-dark:hover{background:#1a1a1a;transform:translateY(-2px);}
+.btn-dark-outline{display:inline-block;border:1px solid rgba(13,13,13,0.5);color:var(--noir);text-decoration:none;font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;padding:1rem 2.2rem;transition:all 0.2s;}
+.btn-dark-outline:hover{background:var(--noir);color:var(--white);}
+
+footer{background:#080808;border-top:1px solid var(--border);padding:3.5rem 2rem 2rem;text-align:center;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.1em;margin-bottom:0.4rem;}
+.footer-logo span{color:var(--crimson);}
+.footer-tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:0.88rem;color:rgba(255,255,255,0.3);margin-bottom:2rem;}
+.footer-links{display:flex;justify-content:center;gap:2.5rem;list-style:none;flex-wrap:wrap;margin-bottom:2rem;}
+.footer-links a{color:rgba(255,255,255,0.35);text-decoration:none;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;transition:color 0.2s;}
+.footer-links a:hover{color:var(--crimson);}
+.footer-copy{font-size:0.62rem;color:rgba(255,255,255,0.15);letter-spacing:0.06em;line-height:1.8;}
+.footer-copy .heart{color:var(--crimson);}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.25rem;}
+  .burger{display:flex;}
+  .nav-links{display:none;}
+  .page-hero{padding:7rem 1.25rem 3rem;}
+  .faq-section{padding:3.5rem 1.25rem 4.5rem;}
+  .faq-cta{padding:3.5rem 1.25rem;}
+  .cta-pair{flex-direction:column;align-items:center;}
+}
+</style>
 </head>
 <body>
-
 <nav>
   <a href="index.html" class="nav-logo">Pretty Little <span>Red Flags</span></a>
-  <button class="burger" id="navBurger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-  <ul class="nav-links" id="navLinks">
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="shop.html">Shop</a></li>
     <li><a href="quiz.html">Quiz</a></li>
@@ -133,107 +94,77 @@
     <li><a href="faq.html" class="active">FAQ</a></li>
   </ul>
 </nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="shop.html">Shop</a>
+  <a href="quiz.html">Quiz</a>
+  <a href="about.html">About</a>
+  <a href="faq.html" class="active">FAQ</a>
+</div>
 
-<section class="faq-hero">
-  <p class="section-eyebrow">Questions & Answers</p>
+<section class="page-hero">
+  <p class="eyebrow">Questions & Answers</p>
   <h1>Got <span>Questions?</span></h1>
-  <p>We have answers. And probably a book recommendation.</p>
+  <p class="sub">We have answers. And probably a book recommendation.</p>
 </section>
 
-<div class="divider"><div class="divider-line"></div><span class="divider-icon">♥</span><div class="divider-line right"></div></div>
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">PRETTY OUTSIDE<span>·</span></span>
+    <span class="ticker-item">DANGEROUS INSIDE<span>·</span></span>
+    <span class="ticker-item">DARK ROMANCE<span>·</span></span>
+    <span class="ticker-item">DELIVERED WITH A KISS<span>·</span></span>
+    <span class="ticker-item">PRETTY LITTLE RED FLAGS<span>·</span></span>
+    <span class="ticker-item">PRETTY OUTSIDE<span>·</span></span>
+    <span class="ticker-item">DANGEROUS INSIDE<span>·</span></span>
+    <span class="ticker-item">DARK ROMANCE<span>·</span></span>
+    <span class="ticker-item">DELIVERED WITH A KISS<span>·</span></span>
+    <span class="ticker-item">PRETTY LITTLE RED FLAGS<span>·</span></span>
+  </div>
+</div>
 
 <section class="faq-section">
-
   <div class="faq-item">
-    <button class="faq-question" onclick="toggle(this)">
-      What's actually in the box?
-      <span class="faq-toggle">+</span>
-    </button>
-    <div class="faq-answer">
-      Every box includes one curated dark romance novel, a mystery theme reveal card, a welcome letter, and carefully selected extras — all wrapped in blush tissue paper with a gold wax seal. The Deluxe Drama Box includes additional curated goodies on top of the essentials. We don't spoil the theme in advance — that's the whole point.
-    </div>
+    <button class="faq-btn" onclick="toggle(this)">What's actually in the box?<span class="faq-toggle">+</span></button>
+    <div class="faq-answer">Every box includes one curated dark romance novel, a mystery theme reveal card, a welcome letter, and carefully selected extras — all wrapped in blush tissue paper with a gold wax seal. The Deluxe Drama Box includes additional curated goodies on top of the essentials. We don't spoil the theme in advance — that's the whole point.</div>
   </div>
-
   <div class="faq-item">
-    <button class="faq-question" onclick="toggle(this)">
-      How do you choose the book?
-      <span class="faq-toggle">+</span>
-    </button>
-    <div class="faq-answer">
-      We read everything ourselves before it goes in a box. No exceptions. We curate based on tropes, spice level, and the overall reading experience — then we match it to the box theme. We take the reader questionnaire seriously, and if you have hard no's, we honor them.
-    </div>
+    <button class="faq-btn" onclick="toggle(this)">How do you choose the book?<span class="faq-toggle">+</span></button>
+    <div class="faq-answer">We read everything ourselves before it goes in a box. No exceptions. We curate based on tropes, spice level, and the overall reading experience — then we match it to the box theme. We take the reader questionnaire seriously, and if you have hard no's, we honor them.</div>
   </div>
-
   <div class="faq-item">
-    <button class="faq-question" onclick="toggle(this)">
-      What if I already own the book?
-      <span class="faq-toggle">+</span>
-    </button>
-    <div class="faq-answer">
-      Fill out the reader questionnaire after purchase and let us know what you've already read. We do our best to avoid duplicates — if we absolutely cannot avoid it, we'll reach out before shipping.
-    </div>
+    <button class="faq-btn" onclick="toggle(this)">What if I already own the book?<span class="faq-toggle">+</span></button>
+    <div class="faq-answer">Fill out the reader questionnaire after purchase and let us know what you've already read. We do our best to avoid duplicates — if we absolutely cannot avoid it, we'll reach out before shipping.</div>
   </div>
-
   <div class="faq-item">
-    <button class="faq-question" onclick="toggle(this)">
-      How spicy are the books?
-      <span class="faq-toggle">+</span>
-    </button>
-    <div class="faq-answer">
-      It depends on the box tier and your questionnaire answers. We rate everything on our internal pepper scale (1 = sweet tension, 5 = call the fire department) and curate accordingly. The mystery theme reveal card always includes a spice level indicator so you know what you're getting into before you open the book.
-    </div>
+    <button class="faq-btn" onclick="toggle(this)">How spicy are the books?<span class="faq-toggle">+</span></button>
+    <div class="faq-answer">It depends on the box tier and your questionnaire answers. We rate everything on our internal pepper scale (1 = sweet tension, 5 = call the fire department) and curate accordingly. The mystery theme reveal card always includes a spice level indicator so you know what you're getting into before you open the book.</div>
   </div>
-
   <div class="faq-item">
-    <button class="faq-question" onclick="toggle(this)">
-      Do you include content warnings?
-      <span class="faq-toggle">+</span>
-    </button>
-    <div class="faq-answer">
-      Yes. Every box includes content flags on the mystery theme reveal card. We don't spoil the book — we flag the relevant warnings so you can make an informed choice before you start reading. Reader safety matters to us.
-    </div>
+    <button class="faq-btn" onclick="toggle(this)">Do you include content warnings?<span class="faq-toggle">+</span></button>
+    <div class="faq-answer">Yes. Every box includes content flags on the mystery theme reveal card. We don't spoil the book — we flag the relevant warnings so you can make an informed choice before you start reading. Reader safety matters to us.</div>
   </div>
-
   <div class="faq-item">
-    <button class="faq-question" onclick="toggle(this)">
-      Where do you ship?
-      <span class="faq-toggle">+</span>
-    </button>
-    <div class="faq-answer">
-      Currently shipping within the US. International shipping is something we're working toward — sign up for the waitlist to be notified when it's available.
-    </div>
+    <button class="faq-btn" onclick="toggle(this)">Where do you ship?<span class="faq-toggle">+</span></button>
+    <div class="faq-answer">Currently shipping within the US. International shipping is something we're working toward — sign up to be notified when it's available.</div>
   </div>
-
   <div class="faq-item">
-    <button class="faq-question" onclick="toggle(this)">
-      What's your refund policy?
-      <span class="faq-toggle">+</span>
-    </button>
-    <div class="faq-answer">
-      Because each box is curated and packed specifically for you, we don't accept returns on opened boxes. If your order arrives damaged or there's an issue with your shipment, reach out to us directly and we will make it right.
-    </div>
+    <button class="faq-btn" onclick="toggle(this)">What's your refund policy?<span class="faq-toggle">+</span></button>
+    <div class="faq-answer">Because each box is curated and packed specifically for you, we don't accept returns on opened boxes. If your order arrives damaged or there's an issue with your shipment, reach out to us directly and we will make it right.</div>
   </div>
-
   <div class="faq-item">
-    <button class="faq-question" onclick="toggle(this)">
-      How do I take the reader quiz?
-      <span class="faq-toggle">+</span>
-    </button>
-    <div class="faq-answer">
-      Head to our Quiz page — it takes about two minutes and matches you to one of four reader types. We use your result to help recommend the right box for you. You can also fill out the full reader questionnaire after purchase to help us personalize your curation.
-    </div>
+    <button class="faq-btn" onclick="toggle(this)">How do I take the reader quiz?<span class="faq-toggle">+</span></button>
+    <div class="faq-answer">Head to our Quiz page — it takes about two minutes and matches you to one of four reader types. We use your result to help recommend the right box for you.</div>
   </div>
-
 </section>
 
-<!-- CTA BANNER -->
 <section class="faq-cta">
-  <p class="section-eyebrow">Still here?</p>
-  <h2>You're Already <span>One of Us</span></h2>
-  <p>Take the quiz. Find your reader type. Get your box.</p>
+  <p class="eyebrow">Still Here?</p>
+  <h2>You're Already One of Us</h2>
+  <p class="sub">Take the quiz. Find your reader type. Get your box.</p>
   <div class="cta-pair">
-    <a href="quiz.html" class="btn-primary">Take the Quiz</a>
-    <a href="shop.html" class="btn-line">Shop the Boxes</a>
+    <a href="quiz.html" class="btn-dark">Take the Quiz</a>
+    <a href="shop.html" class="btn-dark-outline">Shop the Boxes</a>
   </div>
 </section>
 
@@ -241,28 +172,15 @@
   <div class="footer-logo">Pretty Little <span>Red Flags</span></div>
   <p class="footer-tagline">Pretty outside. Dangerous inside.</p>
   <ul class="footer-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="shop.html">Shop</a></li>
-    <li><a href="quiz.html">Quiz</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="quiz.html">Quiz</a></li><li><a href="about.html">About</a></li><li><a href="faq.html">FAQ</a></li>
   </ul>
-  <p class="footer-copy">© 2025 Pretty Little Red Flags Book Box · prettylittlerf.com<br/>Made with <span class="rose">♥</span> and questionable taste in men.</p>
+  <p class="footer-copy">© 2025 Pretty Little Red Flags Book Box · prettylittlerf.com<br/>Made with <span class="heart">♥</span> and questionable taste in men.</p>
 </footer>
-
 <script>
-  const burger = document.getElementById('navBurger');
-  const links = document.getElementById('navLinks');
-  burger?.addEventListener('click', () => {
-    burger.classList.toggle('open');
-    links.classList.toggle('open');
-  });
-  function toggle(el) {
-    const item = el.parentElement;
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  }
+const burger=document.getElementById('burger');const mobileNav=document.getElementById('mobileNav');
+burger.addEventListener('click',()=>{burger.classList.toggle('open');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':'';});
+mobileNav.querySelectorAll('a').forEach(a=>{a.addEventListener('click',()=>{burger.classList.remove('open');mobileNav.classList.remove('open');document.body.style.overflow='';});});
+function toggle(btn){const item=btn.parentElement;const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!isOpen)item.classList.add('open');}
 </script>
 </body>
 </html>

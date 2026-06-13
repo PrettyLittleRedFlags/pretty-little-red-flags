@@ -1,348 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>What's Your Reader Type? | Pretty Little Red Flags</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Reader Quiz | Pretty Little Red Flags Book Box</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--crimson:#BB0E1E;--crimson-dark:#8a0a15;--blush:#F6D6DA;--noir:#0D0D0D;--deep:#120205;--gold:#D4AF37;--white:#ffffff;--muted:rgba(255,255,255,0.5);--border:rgba(187,14,30,0.25);}
+html{scroll-behavior:smooth;}
+body{background:var(--noir);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(13,13,13,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:1.1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.1em;color:var(--white);text-decoration:none;z-index:600;position:relative;}
+.nav-logo span{color:var(--crimson);}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--crimson);}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px;z-index:600;position:relative;}
+.burger span{display:block;width:24px;height:2px;background:var(--white);transition:all 0.3s ease;transform-origin:center;}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.burger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-nav{display:none;position:fixed;inset:0;background:rgba(13,13,13,0.98);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;z-index:400;}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{color:rgba(255,255,255,0.8);text-decoration:none;font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:0.1em;transition:color 0.2s;}
+.mobile-nav a:hover,.mobile-nav a.active{color:var(--crimson);}
 
-    :root {
-      --crimson: #BB0E1E;
-      --blush: #F6D6DA;
-      --noir: #0D0D0D;
-      --gold: #D4AF37;
-      --parchment: #fdf6f0;
-      --white: #ffffff;
-    }
+.page-hero{padding:9rem 2rem 4rem;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(187,14,30,0.18) 0%,var(--deep) 50%,var(--noir) 100%);position:relative;}
+.page-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--crimson),transparent);}
+.page-hero .eyebrow{font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.page-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,9vw,6.5rem);line-height:0.9;letter-spacing:0.03em;}
+.page-hero h1 span{color:var(--crimson);}
+.page-hero .sub{font-family:'Playfair Display',serif;font-style:italic;color:var(--blush);font-size:1.1rem;margin-top:1rem;opacity:0.85;}
+.page-hero .desc{font-size:0.88rem;color:var(--muted);max-width:420px;margin:1rem auto 0;line-height:1.9;}
 
-    body {
-      background-color: var(--noir);
-      color: var(--white);
-      font-family: 'DM Sans', sans-serif;
-      min-height: 100vh;
-    }
+.ticker{background:var(--crimson);padding:0.9rem 0;overflow:hidden;white-space:nowrap;}
+.ticker-inner{display:inline-flex;animation:ticker 20s linear infinite;}
+.ticker-item{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.25em;color:var(--white);padding:0 2rem;}
+.ticker-item span{color:rgba(255,255,255,0.5);margin-left:2rem;}
+@keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 
-    /* NAV */
-    nav {
-      background-color: var(--noir);
-      border-bottom: 1px solid rgba(187, 14, 30, 0.3);
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+/* QUIZ EMBED */
+.quiz-wrap{padding:3rem 1.5rem 5rem;max-width:900px;margin:0 auto;}
+.quiz-embed{border:1px solid var(--border);background:#fdf6f0;min-height:900px;}
 
-    .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.4rem;
-      letter-spacing: 0.08em;
-      color: var(--white);
-      text-decoration: none;
-    }
+/* RESULT TEASER */
+.result-teaser{background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:4rem 2rem;text-align:center;}
+.result-teaser .eyebrow{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;}
+.result-teaser h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);letter-spacing:0.05em;margin-bottom:2.5rem;}
+.result-teaser h3 span{color:var(--crimson);}
+.types-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;max-width:760px;margin:0 auto;}
+.type-card{border:1px solid var(--border);padding:1.5rem 1rem;text-align:center;transition:border-color 0.3s;}
+.type-card:hover{border-color:rgba(187,14,30,0.6);}
+.type-emoji{font-size:1.8rem;margin-bottom:0.6rem;}
+.type-name{font-family:'Playfair Display',serif;font-style:italic;font-size:0.95rem;color:var(--blush);margin-bottom:0.4rem;}
+.type-desc{font-size:0.72rem;color:var(--muted);letter-spacing:0.05em;text-transform:uppercase;}
 
-    .nav-logo span {
-      color: var(--crimson);
-    }
+footer{background:#080808;border-top:1px solid var(--border);padding:3.5rem 2rem 2rem;text-align:center;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.1em;margin-bottom:0.4rem;}
+.footer-logo span{color:var(--crimson);}
+.footer-tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:0.88rem;color:rgba(255,255,255,0.3);margin-bottom:2rem;}
+.footer-links{display:flex;justify-content:center;gap:2.5rem;list-style:none;flex-wrap:wrap;margin-bottom:2rem;}
+.footer-links a{color:rgba(255,255,255,0.35);text-decoration:none;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;transition:color 0.2s;}
+.footer-links a:hover{color:var(--crimson);}
+.footer-copy{font-size:0.62rem;color:rgba(255,255,255,0.15);letter-spacing:0.06em;line-height:1.8;}
+.footer-copy .heart{color:var(--crimson);}
 
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: rgba(255,255,255,0.7);
-      text-decoration: none;
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--crimson);
-    }
-
-    /* HERO */
-    .quiz-hero {
-      background: linear-gradient(180deg, #1a0508 0%, var(--noir) 100%);
-      padding: 5rem 2rem 3rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .quiz-hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(187,14,30,0.15) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-eyebrow {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-
-    .hero-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3.5rem, 9vw, 7rem);
-      line-height: 0.95;
-      letter-spacing: 0.03em;
-      color: var(--white);
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-title span {
-      color: var(--crimson);
-    }
-
-    .hero-subtitle {
-      font-family: 'DM Serif Display', serif;
-      font-style: italic;
-      font-size: clamp(1rem, 2.5vw, 1.4rem);
-      color: var(--blush);
-      margin-bottom: 1.5rem;
-      opacity: 0.9;
-    }
-
-    .hero-desc {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.55);
-      max-width: 480px;
-      margin: 0 auto;
-      line-height: 1.7;
-      letter-spacing: 0.02em;
-    }
-
-    /* DIVIDER */
-    .divider {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      padding: 2rem 2rem 0;
-    }
-
-    .divider-line {
-      height: 1px;
-      width: 60px;
-      background: linear-gradient(90deg, transparent, var(--crimson));
-    }
-
-    .divider-line.right {
-      background: linear-gradient(90deg, var(--crimson), transparent);
-    }
-
-    .divider-icon {
-      color: var(--crimson);
-      font-size: 0.8rem;
-    }
-
-    /* QUIZ EMBED SECTION */
-    .quiz-section {
-      padding: 2rem 1rem 4rem;
-      max-width: 860px;
-      margin: 0 auto;
-    }
-
-    .quiz-embed-wrapper {
-      border-radius: 4px;
-      overflow: hidden;
-      border: 1px solid rgba(187, 14, 30, 0.2);
-      background: var(--parchment);
-    }
-
-    .quiz-embed-wrapper iframe,
-    .quiz-embed-wrapper > div {
-      width: 100% !important;
-      height: auto !important;
-    }
-
-    /* RESULT TEASER STRIP */
-    .result-teaser {
-      background: linear-gradient(135deg, #1a0508, #0d0d0d);
-      border-top: 1px solid rgba(187,14,30,0.2);
-      border-bottom: 1px solid rgba(187,14,30,0.2);
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-
-    .result-teaser h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.1rem;
-      letter-spacing: 0.2em;
-      color: var(--gold);
-      margin-bottom: 2rem;
-      text-transform: uppercase;
-    }
-
-    .result-types {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .result-pill {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(187,14,30,0.3);
-      border-radius: 2px;
-      padding: 0.75rem 1.25rem;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
-      font-family: 'DM Sans', sans-serif;
-    }
-
-    .result-pill strong {
-      display: block;
-      font-size: 1.1rem;
-      color: var(--white);
-      font-family: 'DM Serif Display', serif;
-      font-style: italic;
-      font-weight: normal;
-      letter-spacing: 0.02em;
-      text-transform: none;
-      margin-bottom: 0.2rem;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #080808;
-      border-top: 1px solid rgba(187,14,30,0.2);
-      padding: 2.5rem 2rem;
-      text-align: center;
-    }
-
-    .footer-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.2rem;
-      letter-spacing: 0.1em;
-      color: var(--white);
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-logo span { color: var(--crimson); }
-
-    .footer-tagline {
-      font-family: 'DM Serif Display', serif;
-      font-style: italic;
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.35);
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      list-style: none;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: rgba(255,255,255,0.4);
-      text-decoration: none;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: var(--crimson); }
-
-    .footer-copy {
-      margin-top: 1.5rem;
-      font-size: 0.65rem;
-      color: rgba(255,255,255,0.2);
-      letter-spacing: 0.08em;
-    }
-
-    /* MOBILE */
-    @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .quiz-hero { padding: 3rem 1.25rem 2rem; }
-      .quiz-section { padding: 1.5rem 0.75rem 3rem; }
-      .result-types { gap: 0.75rem; }
-      .result-pill { padding: 0.6rem 1rem; }
-    }
-  </style>
+@media(max-width:768px){
+  nav{padding:1rem 1.25rem;}
+  .burger{display:flex;}
+  .nav-links{display:none;}
+  .page-hero{padding:7rem 1.25rem 3rem;}
+  .quiz-wrap{padding:2rem 0.75rem 4rem;}
+  .quiz-embed{min-height:800px;}
+  .result-teaser{padding:3rem 1.25rem;}
+  .types-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
 </head>
 <body>
+<nav>
+  <a href="index.html" class="nav-logo">Pretty Little <span>Red Flags</span></a>
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="quiz.html" class="active">Quiz</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="shop.html">Shop</a>
+  <a href="quiz.html" class="active">Quiz</a>
+  <a href="about.html">About</a>
+  <a href="faq.html">FAQ</a>
+</div>
 
-  <!-- NAV -->
-  <nav>
-    <a href="index.html" class="nav-logo">Pretty Little <span>Red Flags</span></a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="shop.html">Shop</a></li>
-      <li><a href="quiz.html" class="active">Quiz</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-    </ul>
-  </nav>
+<section class="page-hero">
+  <p class="eyebrow">Pretty Little Red Flags · Reader Quiz</p>
+  <h1>What's Your<br/><span>Red Flag</span><br/>Reader Type?</h1>
+  <p class="sub">Eight questions. One result. Zero regrets.</p>
+  <p class="desc">Tell us who you are and we'll tell you exactly which box was made for you — and which fictional man you'd absolutely ignore every warning sign for.</p>
+</section>
 
-  <!-- HERO -->
-  <section class="quiz-hero">
-    <p class="hero-eyebrow">Pretty Little Red Flags · Reader Quiz</p>
-    <h1 class="hero-title">What's Your<br/><span>Red Flag</span><br/>Reader Type?</h1>
-    <p class="hero-subtitle">Eight questions. One result. Zero regrets.</p>
-    <p class="hero-desc">Tell us who you are and we'll tell you exactly which box was made for you — and which fictional man you'd absolutely ignore every warning sign for.</p>
-  </section>
-
-  <div class="divider">
-    <div class="divider-line"></div>
-    <span class="divider-icon">♥</span>
-    <div class="divider-line right"></div>
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">PRETTY OUTSIDE<span>·</span></span>
+    <span class="ticker-item">DANGEROUS INSIDE<span>·</span></span>
+    <span class="ticker-item">DARK ROMANCE<span>·</span></span>
+    <span class="ticker-item">DELIVERED WITH A KISS<span>·</span></span>
+    <span class="ticker-item">PRETTY LITTLE RED FLAGS<span>·</span></span>
+    <span class="ticker-item">PRETTY OUTSIDE<span>·</span></span>
+    <span class="ticker-item">DANGEROUS INSIDE<span>·</span></span>
+    <span class="ticker-item">DARK ROMANCE<span>·</span></span>
+    <span class="ticker-item">DELIVERED WITH A KISS<span>·</span></span>
+    <span class="ticker-item">PRETTY LITTLE RED FLAGS<span>·</span></span>
   </div>
+</div>
 
-  <!-- QUIZ EMBED -->
-  <section class="quiz-section">
-    <div class="quiz-embed-wrapper">
-      <div style="width:100%;min-height:900px;" data-fillout-id="4Hr3JPxSvHus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
-      <script src="https://server.fillout.com/embed/v1/"></script>
+<section class="quiz-wrap">
+  <div class="quiz-embed">
+    <div data-fillout-id="4Hr3JPxSvHus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize style="width:100%;min-height:900px;"></div>
+    <script src="https://server.fillout.com/embed/v1/"></script>
+  </div>
+</section>
+
+<section class="result-teaser">
+  <p class="eyebrow">Four Types. Which One Are You?</p>
+  <h3>Your result is <span>waiting</span></h3>
+  <div class="types-grid">
+    <div class="type-card">
+      <div class="type-emoji">🖤</div>
+      <div class="type-name">The Dark & Dramatic</div>
+      <div class="type-desc">No guardrails. No apologies.</div>
     </div>
-  </section>
-
-  <!-- RESULT TEASER -->
-  <section class="result-teaser">
-    <h3>Four types. Which one are you?</h3>
-    <div class="result-types">
-      <div class="result-pill"><strong>🖤 The Dark & Dramatic</strong>no guardrails. no apologies.</div>
-      <div class="result-pill"><strong>🌸 Spicy but Soft</strong>heat with your heart.</div>
-      <div class="result-pill"><strong>🔥 Unhinged BookTok</strong>your reading list is a war crime.</div>
-      <div class="result-pill"><strong>🎀 Pretty Safe Red Flags</strong>soft launching your villain era.</div>
+    <div class="type-card">
+      <div class="type-emoji">🌸</div>
+      <div class="type-name">Spicy but Soft</div>
+      <div class="type-desc">Heat with your heart.</div>
     </div>
-  </section>
+    <div class="type-card">
+      <div class="type-emoji">🔥</div>
+      <div class="type-name">Unhinged BookTok</div>
+      <div class="type-desc">Your reading list is a war crime.</div>
+    </div>
+    <div class="type-card">
+      <div class="type-emoji">🎀</div>
+      <div class="type-name">Pretty Safe Red Flags</div>
+      <div class="type-desc">Soft launching your villain era.</div>
+    </div>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-logo">Pretty Little <span>Red Flags</span></div>
-    <p class="footer-tagline">Pretty outside. Dangerous inside.</p>
-    <ul class="footer-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="shop.html">Shop</a></li>
-      <li><a href="quiz.html">Quiz</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-    </ul>
-    <p class="footer-copy">© 2025 Pretty Little Red Flags Book Box · prettylittlerf.com</p>
-  </footer>
-
+<footer>
+  <div class="footer-logo">Pretty Little <span>Red Flags</span></div>
+  <p class="footer-tagline">Pretty outside. Dangerous inside.</p>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="quiz.html">Quiz</a></li><li><a href="about.html">About</a></li><li><a href="faq.html">FAQ</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 Pretty Little Red Flags Book Box · prettylittlerf.com<br/>Made with <span class="heart">♥</span> and questionable taste in men.</p>
+</footer>
+<script>
+const burger=document.getElementById('burger');const mobileNav=document.getElementById('mobileNav');
+burger.addEventListener('click',()=>{burger.classList.toggle('open');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':'';});
+mobileNav.querySelectorAll('a').forEach(a=>{a.addEventListener('click',()=>{burger.classList.remove('open');mobileNav.classList.remove('open');document.body.style.overflow='';});});
+</script>
 </body>
 </html>

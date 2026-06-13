@@ -1,164 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About | Pretty Little Red Flags Book Box</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    .about-hero {
-      padding: 5rem 2rem 3.5rem;
-      text-align: center;
-      background: linear-gradient(180deg, #1a0508 0%, var(--noir) 100%);
-      position: relative;
-    }
-    .about-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(187,14,30,0.15) 0%, transparent 65%);
-      pointer-events: none;
-    }
-    .about-hero h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3.5rem, 9vw, 6.5rem);
-      line-height: 0.95;
-      letter-spacing: 0.03em;
-      margin-bottom: 0.8rem;
-    }
-    .about-hero h1 span { color: var(--crimson); }
-    .about-hero p {
-      font-family: 'DM Serif Display', serif;
-      font-style: italic;
-      color: var(--blush);
-      font-size: 1.1rem;
-      opacity: 0.85;
-    }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>About | Pretty Little Red Flags Book Box</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--crimson:#BB0E1E;--crimson-dark:#8a0a15;--blush:#F6D6DA;--noir:#0D0D0D;--deep:#120205;--gold:#D4AF37;--white:#ffffff;--muted:rgba(255,255,255,0.5);--border:rgba(187,14,30,0.25);}
+html{scroll-behavior:smooth;}
+body{background:var(--noir);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(13,13,13,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:1.1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.1em;color:var(--white);text-decoration:none;z-index:600;position:relative;}
+.nav-logo span{color:var(--crimson);}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--crimson);}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px;z-index:600;position:relative;}
+.burger span{display:block;width:24px;height:2px;background:var(--white);transition:all 0.3s ease;transform-origin:center;}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.burger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-nav{display:none;position:fixed;inset:0;background:rgba(13,13,13,0.98);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;z-index:400;}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{color:rgba(255,255,255,0.8);text-decoration:none;font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:0.1em;transition:color 0.2s;}
+.mobile-nav a:hover,.mobile-nav a.active{color:var(--crimson);}
 
-    /* MANIFESTO */
-    .manifesto {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 5rem 2rem;
-      text-align: center;
-    }
-    .manifesto h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      letter-spacing: 0.04em;
-      margin-bottom: 2rem;
-      line-height: 1.05;
-    }
-    .manifesto h2 span { color: var(--crimson); }
-    .manifesto p {
-      font-size: 0.9rem;
-      color: var(--gray);
-      line-height: 1.95;
-      margin-bottom: 1.5rem;
-    }
-    .manifesto .pull-quote {
-      border-left: 2px solid var(--crimson);
-      margin: 2.5rem 0;
-      padding: 0.5rem 1.5rem;
-      text-align: left;
-    }
-    .manifesto .pull-quote p {
-      font-family: 'DM Serif Display', serif;
-      font-style: italic;
-      font-size: 1.15rem;
-      color: var(--blush);
-      line-height: 1.6;
-      margin: 0;
-      opacity: 0.9;
-    }
+.page-hero{padding:9rem 2rem 4rem;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(187,14,30,0.18) 0%,var(--deep) 50%,var(--noir) 100%);position:relative;}
+.page-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--crimson),transparent);}
+.page-hero .eyebrow{font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.page-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,10vw,7rem);line-height:0.9;letter-spacing:0.03em;}
+.page-hero h1 span{color:var(--crimson);}
+.page-hero .sub{font-family:'Playfair Display',serif;font-style:italic;color:var(--blush);font-size:1.1rem;margin-top:1rem;opacity:0.85;}
 
-    /* VALUES STRIP */
-    .values-strip {
-      background: #0a0a0a;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 4rem 2rem;
-    }
-    .values-strip h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      letter-spacing: 0.05em;
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    .values-strip h2 span { color: var(--crimson); }
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
-      max-width: 860px;
-      margin: 0 auto;
-    }
-    .value-item {
-      padding: 1.5rem;
-      border: 1px solid var(--border);
-    }
-    .value-item .icon {
-      font-size: 1.4rem;
-      margin-bottom: 0.8rem;
-    }
-    .value-item h3 {
-      font-family: 'DM Serif Display', serif;
-      font-style: italic;
-      font-size: 1rem;
-      margin-bottom: 0.6rem;
-      color: var(--blush);
-    }
-    .value-item p {
-      font-size: 0.8rem;
-      color: var(--gray);
-      line-height: 1.7;
-    }
+.ticker{background:var(--crimson);padding:0.9rem 0;overflow:hidden;white-space:nowrap;}
+.ticker-inner{display:inline-flex;animation:ticker 20s linear infinite;}
+.ticker-item{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.25em;color:var(--white);padding:0 2rem;}
+.ticker-item span{color:rgba(255,255,255,0.5);margin-left:2rem;}
+@keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 
-    /* CTA */
-    .about-cta {
-      padding: 5rem 2rem;
-      text-align: center;
-    }
-    .about-cta h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      letter-spacing: 0.04em;
-      margin-bottom: 0.8rem;
-    }
-    .about-cta h2 span { color: var(--crimson); }
-    .about-cta p {
-      font-family: 'DM Serif Display', serif;
-      font-style: italic;
-      color: var(--blush);
-      font-size: 1rem;
-      margin-bottom: 2rem;
-      opacity: 0.8;
-    }
-    .cta-pair {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+/* MANIFESTO */
+.manifesto{max-width:720px;margin:0 auto;padding:6rem 2rem;}
+.manifesto .eyebrow{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;text-align:center;}
+.manifesto h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.5rem);letter-spacing:0.04em;text-align:center;margin-bottom:2.5rem;line-height:1.05;}
+.manifesto h2 span{color:var(--crimson);}
+.manifesto p{font-size:0.9rem;color:var(--muted);line-height:1.95;margin-bottom:1.5rem;}
+.pull-quote{border-left:2px solid var(--crimson);margin:2.5rem 0;padding:0.5rem 1.8rem;}
+.pull-quote p{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.1rem,2.5vw,1.4rem);color:var(--blush);line-height:1.6;margin:0;opacity:0.9;}
 
-    @media (max-width: 640px) {
-      .about-hero { padding: 3rem 1.25rem 2rem; }
-      .manifesto { padding: 3.5rem 1.25rem; }
-      .values-strip { padding: 3rem 1.25rem; }
-      .about-cta { padding: 3.5rem 1.25rem; }
-    }
-  </style>
+/* VALUES */
+.values{background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:5rem 2rem;}
+.values .eyebrow{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;text-align:center;}
+.values h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3rem);letter-spacing:0.04em;text-align:center;margin-bottom:3rem;}
+.values h2 span{color:var(--crimson);}
+.values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;max-width:860px;margin:0 auto;}
+.value{border:1px solid var(--border);padding:2rem;transition:border-color 0.3s;}
+.value:hover{border-color:rgba(187,14,30,0.5);}
+.value .icon{font-size:1.5rem;margin-bottom:0.8rem;}
+.value h3{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:var(--blush);margin-bottom:0.6rem;}
+.value p{font-size:0.8rem;color:var(--muted);line-height:1.7;}
+
+/* CTA */
+.about-cta{padding:5rem 2rem;text-align:center;background:var(--crimson);}
+.about-cta .eyebrow{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:1rem;}
+.about-cta h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,7vw,5rem);letter-spacing:0.04em;margin-bottom:0.8rem;line-height:1;}
+.about-cta .sub{font-family:'Playfair Display',serif;font-style:italic;color:rgba(255,255,255,0.75);font-size:1.1rem;margin-bottom:2.5rem;}
+.cta-pair{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-dark{display:inline-block;background:var(--noir);color:var(--white);text-decoration:none;font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;padding:1rem 2.2rem;transition:background 0.2s,transform 0.15s;}
+.btn-dark:hover{background:#1a1a1a;transform:translateY(-2px);}
+.btn-dark-outline{display:inline-block;border:1px solid rgba(13,13,13,0.5);color:var(--noir);text-decoration:none;font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;padding:1rem 2.2rem;transition:all 0.2s;}
+.btn-dark-outline:hover{background:var(--noir);color:var(--white);}
+
+footer{background:#080808;border-top:1px solid var(--border);padding:3.5rem 2rem 2rem;text-align:center;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.1em;margin-bottom:0.4rem;}
+.footer-logo span{color:var(--crimson);}
+.footer-tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:0.88rem;color:rgba(255,255,255,0.3);margin-bottom:2rem;}
+.footer-links{display:flex;justify-content:center;gap:2.5rem;list-style:none;flex-wrap:wrap;margin-bottom:2rem;}
+.footer-links a{color:rgba(255,255,255,0.35);text-decoration:none;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;transition:color 0.2s;}
+.footer-links a:hover{color:var(--crimson);}
+.footer-copy{font-size:0.62rem;color:rgba(255,255,255,0.15);letter-spacing:0.06em;line-height:1.8;}
+.footer-copy .heart{color:var(--crimson);}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.25rem;}
+  .burger{display:flex;}
+  .nav-links{display:none;}
+  .page-hero{padding:7rem 1.25rem 3rem;}
+  .manifesto{padding:4rem 1.25rem;}
+  .values{padding:3.5rem 1.25rem;}
+  .about-cta{padding:3.5rem 1.25rem;}
+  .cta-pair{flex-direction:column;align-items:center;}
+}
+</style>
 </head>
 <body>
-
 <nav>
   <a href="index.html" class="nav-logo">Pretty Little <span>Red Flags</span></a>
-  <button class="burger" id="navBurger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-  <ul class="nav-links" id="navLinks">
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="shop.html">Shop</a></li>
     <li><a href="quiz.html">Quiz</a></li>
@@ -166,68 +105,65 @@
     <li><a href="faq.html">FAQ</a></li>
   </ul>
 </nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="shop.html">Shop</a>
+  <a href="quiz.html">Quiz</a>
+  <a href="about.html" class="active">About</a>
+  <a href="faq.html">FAQ</a>
+</div>
 
-<section class="about-hero">
-  <p class="section-eyebrow">The Story</p>
+<section class="page-hero">
+  <p class="eyebrow">The Story</p>
   <h1>Who We <span>Are</span></h1>
-  <p>Built by readers who know better and read worse.</p>
+  <p class="sub">Built by readers who know better and read worse.</p>
 </section>
 
-<div class="divider"><div class="divider-line"></div><span class="divider-icon">♥</span><div class="divider-line right"></div></div>
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">PRETTY OUTSIDE<span>·</span></span>
+    <span class="ticker-item">DANGEROUS INSIDE<span>·</span></span>
+    <span class="ticker-item">DARK ROMANCE<span>·</span></span>
+    <span class="ticker-item">DELIVERED WITH A KISS<span>·</span></span>
+    <span class="ticker-item">PRETTY LITTLE RED FLAGS<span>·</span></span>
+    <span class="ticker-item">PRETTY OUTSIDE<span>·</span></span>
+    <span class="ticker-item">DANGEROUS INSIDE<span>·</span></span>
+    <span class="ticker-item">DARK ROMANCE<span>·</span></span>
+    <span class="ticker-item">DELIVERED WITH A KISS<span>·</span></span>
+    <span class="ticker-item">PRETTY LITTLE RED FLAGS<span>·</span></span>
+  </div>
+</div>
 
 <section class="manifesto">
-  <p class="section-eyebrow">The Origin</p>
+  <p class="eyebrow">The Origin</p>
   <h2>We kept looking for something<br/><span>that didn't exist.</span></h2>
-
-  <p>Not just a book box. Not just a subscription with a novel and a candle thrown in. Something that actually understood the specific kind of reader we are — the one who annotates her favorites, who buys pretty things to romanticize an already over-romanticized hobby, who wants the unboxing to feel like the opening chapter of the book inside.</p>
-
+  <p>Not just a book box. Something that actually understood the specific kind of reader we are — the one who annotates her favorites, who romanticizes everything including her inbox, who wants the unboxing to feel like the opening chapter of the book inside.</p>
   <div class="pull-quote">
     <p>"We wanted something wrapped in tissue paper like a gift from your most unhinged best friend. So we built it."</p>
   </div>
-
   <p>Pretty Little Red Flags is a curated dark romance book box for the girls who read the red flags and ask for more details anyway. Every box is hand-selected, tissue-wrapped, and wax-sealed — because the packaging is part of the story.</p>
-
-  <p>We are not a corporate operation. We are two readers who got tired of waiting for the thing we wanted to exist. This is for the girls who feel seen by morally gray men in fiction, who cry at five-star endings, who send their friends book recommendations with zero content warnings and a casual "it gets better after chapter four."</p>
-
+  <p>We are not a corporate operation. We are readers who got tired of waiting for the thing we wanted to exist. This is for the girls who feel seen by morally gray men in fiction, who cry at five-star endings, who send friends book recommendations with zero content warnings and a casual "it gets better after chapter four."</p>
   <p>You know who you are. Welcome home.</p>
 </section>
 
-<!-- VALUES -->
-<section class="values-strip">
-  <p class="section-eyebrow" style="text-align:center;margin-bottom:0.5rem;">What We Believe</p>
+<section class="values">
+  <p class="eyebrow">What We Believe</p>
   <h2>The <span>Red Flag</span> Manifesto</h2>
   <div class="values-grid">
-    <div class="value-item">
-      <div class="icon">🖤</div>
-      <h3>Curation over quantity</h3>
-      <p>Every single thing in your box was chosen on purpose. Nothing is filler. Everything is the point.</p>
-    </div>
-    <div class="value-item">
-      <div class="icon">🎀</div>
-      <h3>Presentation is everything</h3>
-      <p>The tissue paper matters. The wax seal matters. The way it feels to open the box matters. We believe in the ritual.</p>
-    </div>
-    <div class="value-item">
-      <div class="icon">♥</div>
-      <h3>The reader first</h3>
-      <p>We curate for the girl who actually reads — who annotates, who rereads, who recommends with zero disclaimers.</p>
-    </div>
-    <div class="value-item">
-      <div class="icon">🌹</div>
-      <h3>Pretty outside. Dangerous inside.</h3>
-      <p>The whole brand is a vibe. We're not watering it down for anyone.</p>
-    </div>
+    <div class="value"><div class="icon">🖤</div><h3>Curation over quantity</h3><p>Every single thing in your box was chosen on purpose. Nothing is filler. Everything is the point.</p></div>
+    <div class="value"><div class="icon">🎀</div><h3>Presentation is everything</h3><p>The tissue paper matters. The wax seal matters. The ritual of opening the box matters. We believe in the experience.</p></div>
+    <div class="value"><div class="icon">♥</div><h3>The reader first</h3><p>We curate for the girl who actually reads — who annotates, who rereads, who recommends with zero disclaimers.</p></div>
+    <div class="value"><div class="icon">🌹</div><h3>Pretty outside. Dangerous inside.</h3><p>The whole brand is a vibe. We're not watering it down for anyone.</p></div>
   </div>
 </section>
 
-<!-- CTA -->
 <section class="about-cta">
-  <p class="section-eyebrow">Ready?</p>
-  <h2>Find Your <span>Reader Type</span></h2>
-  <p>Eight questions. The box that was built for you.</p>
+  <p class="eyebrow">Ready?</p>
+  <h2>Find Your Reader Type</h2>
+  <p class="sub">Eight questions. The box that was built for you.</p>
   <div class="cta-pair">
-    <a href="quiz.html" class="btn-primary">Take the Quiz</a>
-    <a href="shop.html" class="btn-line">Shop the Boxes</a>
+    <a href="quiz.html" class="btn-dark">Take the Quiz</a>
+    <a href="shop.html" class="btn-dark-outline">Shop the Boxes</a>
   </div>
 </section>
 
@@ -235,22 +171,14 @@
   <div class="footer-logo">Pretty Little <span>Red Flags</span></div>
   <p class="footer-tagline">Pretty outside. Dangerous inside.</p>
   <ul class="footer-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="shop.html">Shop</a></li>
-    <li><a href="quiz.html">Quiz</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="quiz.html">Quiz</a></li><li><a href="about.html">About</a></li><li><a href="faq.html">FAQ</a></li>
   </ul>
-  <p class="footer-copy">© 2025 Pretty Little Red Flags Book Box · prettylittlerf.com<br/>Made with <span class="rose">♥</span> and questionable taste in men.</p>
+  <p class="footer-copy">© 2025 Pretty Little Red Flags Book Box · prettylittlerf.com<br/>Made with <span class="heart">♥</span> and questionable taste in men.</p>
 </footer>
-
 <script>
-  const burger = document.getElementById('navBurger');
-  const links = document.getElementById('navLinks');
-  burger?.addEventListener('click', () => {
-    burger.classList.toggle('open');
-    links.classList.toggle('open');
-  });
+const burger=document.getElementById('burger');const mobileNav=document.getElementById('mobileNav');
+burger.addEventListener('click',()=>{burger.classList.toggle('open');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':'';});
+mobileNav.querySelectorAll('a').forEach(a=>{a.addEventListener('click',()=>{burger.classList.remove('open');mobileNav.classList.remove('open');document.body.style.overflow='';});});
 </script>
 </body>
 </html>
